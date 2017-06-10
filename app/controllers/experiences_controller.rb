@@ -11,6 +11,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1
   # GET /experiences/1.json
   def show
+    @photos = @experience.photos
   end
 
   # GET /experiences/new
@@ -20,6 +21,13 @@ class ExperiencesController < ApplicationController
 
   # GET /experiences/1/edit
   def edit
+
+    if current_nomad.id == @experience.nomad.id
+      @photos = @experience.photos
+    else
+      redirect_to root_path, notice: "You don't have permission."
+    end
+
   end
 
   # POST /experiences
@@ -28,28 +36,35 @@ class ExperiencesController < ApplicationController
     @experience = Experience.new(experience_params)
     @experience.nomad_id = current_nomad.id
 
-    respond_to do |format|
-      if @experience.save
-        format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
-        format.json { render :show, status: :created, location: @experience }
-      else
-        format.html { render :new }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
+if @experience.save
+
+      if params[:images] 
+        params[:images].each do |image|
+          @experience.photos.create(image: image)
+        end
       end
+
+      @photos = @experience.photos
+      redirect_to edit_experience_path(@experience), notice: "Saved..."
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /experiences/1
   # PATCH/PUT /experiences/1.json
   def update
-    respond_to do |format|
-      if @experience.update(experience_params)
-        format.html { redirect_to @experience, notice: 'Experience was successfully updated.' }
-        format.json { render :show, status: :ok, location: @experience }
-      else
-        format.html { render :edit }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
+    if @experience.update(experience_params)
+
+      if params[:images] 
+        params[:images].each do |image|
+          @experience.photos.create(image: image)
+        end
       end
+
+      redirect_to edit_experience_path(@experience), notice: "Updated..."
+    else
+      render :edit
     end
   end
 
