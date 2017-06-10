@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Experiences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Vista</th>
+      <th>Olfato</th>
+      <th>Gusto</th>
+      <th>Oido</th>
+      <th>Gusto</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Expe</th>
+      <th>Money</th>
+      <th>Currency</th>
+      <th>Aprox time</th>
+      <th>Gente</th>
+      <th>Idioma</th>
+      <th>Is risky</th>
+      <th>Is internet</th>
+      <th>Is reservation</th>
+      <th>Website</th>
+      <th>Advice</th>
+      <th>Nomad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @experiences.each do |experience| %>
+      <tr>
+        <td><%= experience.title %></td>
+        <td><%= experience.description %></td>
+        <td><%= experience.vista %></td>
+        <td><%= experience.olfato %></td>
+        <td><%= experience.gusto %></td>
+        <td><%= experience.oido %></td>
+        <td><%= experience.gusto %></td>
+        <td><%= experience.latitude %></td>
+        <td><%= experience.longitude %></td>
+        <td><%= experience.expe %></td>
+        <td><%= experience.money %></td>
+        <td><%= experience.currency %></td>
+        <td><%= experience.aprox_time %></td>
+        <td><%= experience.gente %></td>
+        <td><%= experience.idioma %></td>
+        <td><%= experience.is_risky %></td>
+        <td><%= experience.is_internet %></td>
+        <td><%= experience.is_reservation %></td>
+        <td><%= experience.website %></td>
+        <td><%= experience.advice %></td>
+        <td><%= experience.nomad %></td>
+        <td><%= link_to 'Show', experience %></td>
+        <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
+        <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Experience', new_experience_path %>

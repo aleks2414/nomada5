@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  vista: 1.5
+  olfato: 1.5
+  gusto: 1.5
+  oido: 1.5
+  gusto: 1.5
+  latitude: 1.5
+  longitude: 1.5
+  expe: 1.5
+  money: 1
+  currency: MyString
+  aprox_time: MyString
+  gente: 1
+  idioma: MyString
+  is_risky: false
+  is_internet: false
+  is_reservation: false
+  website: MyString
+  advice: MyText
+  nomad_id: 
+
+two:
+  title: MyString
+  description: MyText
+  vista: 1.5
+  olfato: 1.5
+  gusto: 1.5
+  oido: 1.5
+  gusto: 1.5
+  latitude: 1.5
+  longitude: 1.5
+  expe: 1.5
+  money: 1
+  currency: MyString
+  aprox_time: MyString
+  gente: 1
+  idioma: MyString
+  is_risky: false
+  is_internet: false
+  is_reservation: false
+  website: MyString
+  advice: MyText
+  nomad_id: 

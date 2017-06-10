@@ -1,0 +1,38 @@
+	<header class="cd-header">
+	<div id="cd-logo"><a href="<%= root_path %>"><%= image_tag ("cd-logo.svg")%></a></div>
+
+		<nav class="cd-main-nav">
+			<ul>
+
+				<% if nomad_signed_in? %>
+				<!-- inser more links here -->
+				<li class="mini <%= 'active' if current_page?(edit_nomad_registration_path) %>">
+        <a href="<%= edit_nomad_registration_path(@nomad) %>">Mi perfil</a>
+      </li>
+      <li class="mini"> <a href="<%= destroy_nomad_session_path %>" data-method='delete'>
+        Cerrar Sesión
+      </a></li>
+
+				<% else %>
+
+				<li class="mini"><a href="<%= new_nomad_session_path %>"> Iniciar Sesión </a></li>
+				<li class="mini"><a href="<%= new_nomad_registration_path %>"> Registrarse </a></li>
+				<li class="mini"><a href="<%= root_path %>"> ¿Quieres ser un nómada? </a></li>
+				<% end %>
+			</ul>
+		</nav> <!-- cd-main-nav -->
+	</header>
+
+
+
+	<script>
+	
+	jQuery(document).ready(function($){
+	//open-close submenu on mobile
+	$('.cd-main-nav').on('click', function(event){
+		if($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
+	});
+});
+	
+
+	</script>
