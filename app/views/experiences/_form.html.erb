@@ -13,12 +13,18 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title, id: "address" %>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address, id: "address" %>
+  </div>
+
   <div class="field">
     <%= f.label :vista %><br>
     <%= f.text_field :vista %>
@@ -114,16 +120,12 @@
 
  <div id="panel">
     <!--<input id="city_country" type="textbox" value="Berlin, Germany">-->
-    <input type="button" value="Locate Me" onclick="initMap()">
+    <input type="button" value="Locate Me" id="bucks">
   </div>
   <div id="mapCanvas"></div>
   <div id="infoPanel">
     <b>Marker status:</b>
     <div id="markerStatus"><i>Click and drag the marker.</i></div>
-    <b>Current position:</b>
-    <div id="info3"></div>
-    <b>Closest matching address:</b>
-    <div id="address2"></div>
   </div>
 
 
@@ -131,7 +133,7 @@
 
 var map, infoWindow;
 var geocoder;
-function initMap() {
+$("#bucks").click(function initMap() {
   geocoder = new google.maps.Geocoder();
   map = new google.maps.Map(document.getElementById('mapCanvas'), {
     center: {lat: -34.397, lng: 150.644},
@@ -197,7 +199,9 @@ if (navigator.geolocation) {
   handleLocationError(false, infoWindow, map.getCenter());
 }
 
-}
+})
+
+
 function geocodePosition(pos) {
   geocoder.geocode({
     latLng: pos
