@@ -11,7 +11,7 @@ class CreateExperiences < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.float :expe
-      t.integer :money
+      t.string :money
       t.string :currency
       t.string :aprox_time
       t.integer :gente

@@ -227,6 +227,10 @@ Main components
     font-size: 48px;
     max-width: 100%;
   }
+  li {
+    display: inline;
+    margin: 0 5px 0 5px;
+  }
 }
 
 
@@ -247,6 +251,7 @@ Main components
   background: #fff;
   position: relative;
   margin-bottom: 50px;
+  margin-top: 100px;
 
   -webkit-box-shadow: 0px 1px 10px 0px rgba(207,207,207,1);
   -moz-box-shadow: 0px 1px 10px 0px rgba(207,207,207,1);
@@ -528,7 +533,7 @@ hr.red {
   font-size: 16px;
   text-transform: uppercase;
   min-width: 150px;
-  font-family: 'Gotham_bold', sans-serif;
+  font-family: 'Gotham_bold', sans-serif !important;
   border-radius: 3px;
   padding: 5px;
   display: inline-block;
@@ -546,6 +551,17 @@ hr.red {
   &:hover {
     color: white;
     background-color: $red;
+  }
+
+}
+
+.button_blue {
+  color: $blue;
+  background-color: white;
+  border: solid 2px $blue;
+  &:hover {
+    color: white;
+    background-color: $blue;
   }
 
 }
@@ -742,4 +758,3 @@ figure {
 #share {
   margin-top: 3rem;
 }
-

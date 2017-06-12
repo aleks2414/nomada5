@@ -1,15 +1,11 @@
 <%= form_for @experience, :html => { multipart: true } do |f| %>
-  <% if @experience.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
-
-      <ul>
-      <% @experience.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% unless @experience.errors.empty? %>
+  <script type="text/javascript">
+    <% @experience.errors.full_messages.each do |msg| %>
+      toastr.error('<%= msg %>')
+    <% end %>
+  </script>
+<% end %>
 
   <div class="field">
     <%= f.label :title %><br>
@@ -111,24 +107,27 @@
 
 
   <div class="field">
-    <%= f.label :expe %><br>
-    <%= f.text_field :expe %>
+    <%= f.label :Experiencia %><br>
+    <%= f.range_field :expe, :min=>0, :max=>10, :class=>"slide", :id=>"slider1"%>
   </div>
+
+
+
   <div class="field">
-    <%= f.label :money %><br>
+    <%= f.label :Cuanto_dinero_llevo %><br>
     <%= f.number_field :money %>
   </div>
   <div class="field">
-    <%= f.label :currency %><br>
+    <%= f.label :Moneda %><br>
     <%= f.text_field :currency %>
   </div>
   <div class="field">
-    <%= f.label :aprox_time %><br>
+    <%= f.label :tiempo_aproximado %><br>
     <%= f.text_field :aprox_time %>
   </div>
   <div class="field">
     <%= f.label :gente %><br>
-    <%= f.number_field :gente %>
+    <%= f.range_field :gente, :min=>0, :max=>10, :class=>"slide", :id=>"slider1"%>
   </div>
   <div class="field">
     <%= f.label :idioma %><br>
@@ -301,3 +300,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCXph4Sx9MklyoSlZ4JH-FCryYgRRgWi4&callback=initMap"
         async defer></script>
+
+<script>
+$("#ex8").slider({
+    tooltip: 'always'
+});
+</script>

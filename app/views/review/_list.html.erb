@@ -1,0 +1,27 @@
+<% if @reviews.count == 0 %>
+	<div class="text-center"><h4>There is no Review yet</h4></div>
+<% else %>
+
+	<% @reviews.order("id desc").limit(6).each do |r| %>
+
+		<div class="row">
+				<div id="stars_<%= r.id %>"></div>
+				<div><%= r.created_at.strftime("%v") %></div>
+				<div><%= r.comment %></div>
+		</div>
+
+
+		<script>
+			$('#stars_<%= r.id %>').raty({
+				path: '/assets',
+				readOnly: true,
+				score: <%= r.star %>
+			});
+		</script>
+
+
+	<% end %>
+
+<% end %>
+
+

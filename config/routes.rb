@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :experiences
+  resources :experiences do
+    resources :reviews
+  end
   devise_for :nomads
   resources :photos
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'welcome#index'
+
+   resources :ratings, only: [:update, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

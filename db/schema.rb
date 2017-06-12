@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611154922) do
+ActiveRecord::Schema.define(version: 20170612172815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170611154922) do
     t.float    "latitude"
     t.float    "longitude"
     t.float    "expe"
-    t.integer  "money"
+    t.string   "money"
     t.string   "currency"
     t.string   "aprox_time"
     t.integer  "gente"
@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 20170611154922) do
 
   add_index "photos", ["experience_id"], name: "index_photos_on_experience_id", using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "star",          default: 1
+    t.text     "comment"
+    t.integer  "experience_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "reviews", ["experience_id"], name: "index_reviews_on_experience_id", using: :btree
+
   add_foreign_key "experiences", "nomads"
   add_foreign_key "photos", "experiences"
+  add_foreign_key "reviews", "experiences"
 end

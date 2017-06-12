@@ -12,6 +12,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1.json
   def show
     @photos = @experience.photos
+    @reviews = @experience.reviews
   end
 
   # GET /experiences/new

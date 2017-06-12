@@ -29,6 +29,7 @@
           <div id="izq">
             <h4><%= @experience.title %></h4>
             <h6><%= @experience.ciudad %> - <%= @experience.pais %></h6>
+            <p><%= @experience.address%></p>
             <br>
             <h5>DESCRIPCIÓN:</h5>
             <p><%= @experience.description %></p>
@@ -83,7 +84,7 @@
                   <% end %>
 
                   <div>
-                    <span class="material-icons md-24">monetization_on</span><h6> Website: <br> <%= @experience.website %></h6>
+                    <span class="material-icons md-24">dvr</span><h6> Website: <br> <%= @experience.website %></h6>
                   </div>
 
                 </div>
@@ -122,7 +123,7 @@
                 <!--  -->
                 <li>
                   <div class="day">
-                    <h1><%= @experience.gusto%> <br><i class="material-icons md-48">local_florist</i></h1>
+                    <h1><%= @experience.gusto%> <br><i class="material-icons md-48">local_pizza</i></h1>
                   </div>
                 </li>
                 <!--  -->
@@ -216,13 +217,39 @@
       </div>
     </div>
 
+    <!-- Reviews -->
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Reseñas: <%= @experience.average_rating %> (<%= @reviews.count %>)</h3>
+        <div class="container">
+          <div>
+            <%= render 'review/review' %>
+          </div>
+          <div>
+            <%= render 'review/list' %>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
 
+
+<br><br>
 <div class="container">
 <div class="row">
-  <%= link_to 'Edit', edit_experience_path(@experience) %> |
-  <%= link_to 'Back', experiences_path %>
+
+<% if current_nomad == @experience.nomad %>
+
+<%= link_to 'Edit', edit_experience_path(@experience) %> |
+<%= link_to 'Back', experiences_path %> |
+<%= link_to 'Destroy', @experience, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+
+
+<% end %>
+
 </div>
 </div>
+
+<br><br>

@@ -1,0 +1,28 @@
+<%= form_for([@experience, @experience.reviews.new]) do |f| %>
+
+
+
+<div id="user_stars"></div>
+<br>
+	
+	<div class="form-group">
+		<%= f.text_area :comment, rows: 3, class: "form-control" %>	
+	</div>
+	
+
+	<div class="actions">
+		<%= f.submit "Crear Reseña", class: "button button_red" %>
+	</div>
+
+	<hr>
+
+<% end %>
+
+
+<script>
+	$('#user_stars').raty({
+		path: '/assets',
+		scoreName: 'review[star]',
+		score: 1
+	});
+</script>
