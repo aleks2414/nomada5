@@ -3,11 +3,11 @@ class CreateExperiences < ActiveRecord::Migration
     create_table :experiences do |t|
       t.string :title
       t.text :description
-      t.float :vista
-      t.float :olfato
-      t.float :gusto
-      t.float :oido
-      t.float :gusto
+      t.float :vista, default: 0
+      t.float :olfato, default: 0
+      t.float :gusto, default: 0
+      t.float :oido, default: 0
+      t.float :tacto, default: 0
       t.float :latitude
       t.float :longitude
       t.float :expe

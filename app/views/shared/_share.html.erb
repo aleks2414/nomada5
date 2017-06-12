@@ -1,0 +1,52 @@
+<div id="share">
+<div class="col-md-12">
+<h4>PASA LA VOZ</h4>
+    <a class="icon-facebook" rel="nofollow"
+    href="http://www.facebook.com/"
+    onclick="popUp=window.open(
+      'http://www.facebook.com/sharer.php?u=<%="#{request.original_url}"%>',
+      'popupwindow',
+      'scrollbars=yes,width=800,height=400');
+    popUp.focus();
+    return false">
+    <i class="fa fa-facebook fa-lg face"></i>
+  </a>
+
+
+  <a class="icon-twitter" rel="nofollow"
+  href="http://twitter.com/"
+  onclick="popUp=window.open(
+    'http://twitter.com/intent/tweet?text=\'<%= @experience.title %>\' via Adios Quincena - <%="#{request.original_url}"%>',
+    'popupwindow',
+    'scrollbars=yes,width=800,height=400');
+  popUp.focus();
+  return false">
+  <i class="fa fa-twitter fa-lg twitter"></i>
+</a>
+
+
+<a class="icon-pinterest" rel="nofollow"
+href="http://www.pinterest.com/"
+onclick="popUp=window.open(
+  'http://pinterest.com/pin/create/button/?url=<%="#{request.original_url}"%>&amp;media=<%= @experience.photos[0].image %>&amp;description=<%= @experience.title %>',
+  'popupwindow',
+  'scrollbars=yes,width=800,height=400');
+popUp.focus();
+return false">
+<i class="fa fa-pinterest fa-lg you"></i>
+</a>
+
+
+<a class="icon-gplus" rel="nofollow"
+href="http://www.plus.google.com/"
+onclick="popUp=window.open(
+  'https://plus.google.com/share?url=<%="#{request.original_url}"%>',
+  'popupwindow',
+  'scrollbars=yes,width=800,height=400');
+popUp.focus();
+return false">
+<i class="fa fa-google-plus fa-lg you"></i>
+</a>
+
+</div>
+</div>
