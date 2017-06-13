@@ -96,6 +96,10 @@
             <br>
             <h5>CONSEJO:</h5>
             <p><%= @experience.advice %></p>
+
+<br>
+            <h5>NOMADA:</h5>
+            <p><%= link_to "#{@experience.nomad.name}", nomad_path(@experience.nomad), class:"button button_blue" %></p>
           </div>
         </div>
 

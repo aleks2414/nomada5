@@ -1,0 +1,58 @@
+<div id="showing">
+<div class="container">
+	<div class="container_fluid">
+		<div class="col-sm-3">
+			<div class="imagen">
+				<%= image_tag (src='prueba.jpg') %>
+			</div>
+			<h4><%= @nomad.name %></h4>
+
+			<p><%= @nomad.description.truncate(400)%></p>
+
+<br><br>
+
+	<div id="icons">
+              <div class="row">
+                  <div>
+                    <span class="material-icons md-24">flag</span><h6> Country: <%= @nomad.pais %></h6>
+                  </div>
+
+                  <div>
+                    <span class="material-icons md-24">location_city</span><h6> City: <%= @nomad.ciudad %></h6>
+                  </div>
+
+                  <% if @nomad.facebook.present? %> 
+                  <div>
+                    <span class="fa fa-facebook"></span><h6><%= @nomad.facebook %></h6>
+                  </div>
+                  <% end %>
+
+                  <% if @nomad.twitter.present? %> 
+                  <div>
+                    <span class="fa fa-twitter"></span><h6><%= @nomad.twitter %></h6>
+                  </div>
+                  <% end %>
+
+                  <% if @nomad.instagram.present? %> 
+                  <div>
+                    <span class="fa fa-instagram"></span><h6><%= @nomad.instagram %></h6>
+                  </div>
+                  <% end %>
+
+                  <div>
+                    <span class="material-icons md-24">dvr</span><h6> Website: <br> <%= @nomad.website %></h6>
+                  </div>
+
+              </div>
+            </div>
+
+
+		</div>
+
+		<div class="col-sm-9">
+			<%= render 'list' %>
+		</div>
+
+	</div>
+</div>
+</div>

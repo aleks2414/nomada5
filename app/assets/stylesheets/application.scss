@@ -264,6 +264,10 @@ Main components
   transition: all 0.5s ease;  
 }
 
+#card2 {
+  margin-top: 0;
+}
+
 .city-selected {
   position: relative;
   overflow: hidden;
@@ -699,6 +703,9 @@ figure {
     margin-left: 35px;
 
   }
+  span {
+    font-size: 21px;
+  }
 }
 
 
@@ -769,4 +776,18 @@ figure {
 #map3 {
   width: 100%;
   height: 85vh;
+}
+
+#showing {
+  .imagen {
+  height:200px;
+  line-height:200px;
+  overflow:hidden;
+  text-align:center;
+  width:200px;
+    img {
+      margin:-100%;
+
+    }
+  }
 }

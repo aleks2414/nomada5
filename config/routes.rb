@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'nomads/show'
+
+
   resources :experiences do
     resources :reviews
   end
@@ -14,6 +17,8 @@ Rails.application.routes.draw do
    resources :ratings, only: [:update, :create]
 
    get '/experiences_map' => 'experiences#map'
+
+  resources :nomads, only: [:show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
