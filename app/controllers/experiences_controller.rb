@@ -2,6 +2,11 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_nomad!, only: [:new, :edit]
 
+  
+  def map
+    @experiences = Experience.all
+  end
+
   # GET /experiences
   # GET /experiences.json
   def index

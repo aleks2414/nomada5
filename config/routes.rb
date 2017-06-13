@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
    resources :ratings, only: [:update, :create]
 
+   get '/experiences_map' => 'experiences#map'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

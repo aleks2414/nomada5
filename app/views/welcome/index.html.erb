@@ -5,7 +5,7 @@
 
 			<ul>
 				<li>
-					<%= link_to "Camino nómada", root_path, class: "button button_red" %>
+					<%= link_to "Camino nómada", experiences_map_path, class: "button button_red" %>
 				</li>
 				<li>
 					<%= link_to "Hazte Nómada", root_path, class: "button button_blue" %>
@@ -14,5 +14,87 @@
 
 </div>
 
+<div id="map2"></div>
+
 
 <%= render 'experiences/expes' %>
+
+
+
+
+
+<script>
+
+function initMap() {
+
+    // Creating a new map
+    var map = new google.maps.Map(document.getElementById("map2"), {
+          center: new google.maps.LatLng(19.9590566, -7.4226508),
+          scrollwheel: false,
+          zoom: 3,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+
+    // Creating the JSON data
+    var json = [
+        
+        <% @experiences.each do |experience| %>
+        {
+            "title": "<%= experience.title %>",
+            "lat": <%= experience.latitude %>,
+            "lng": <%= experience.longitude%>,
+            "description": '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h3 id="firstHeading" class="firstHeading"><%=experience.title %></h3>'+
+            '<div id="bodyContent">'+
+            '<p><%=experience.ciudad %> - <%=experience.pais %> </p>'+
+            '<%= link_to 'Ver más', experience_path(experience), class: "button button_blue" %> '+
+            '</div>'+
+            '</div>'
+        },
+        <% end %>
+        
+    ]
+
+    // Creating a global infoWindow object that will be reused by all markers
+    var infoWindow = new google.maps.InfoWindow({
+      maxWidth: 200
+    });
+
+    // Looping through the JSON data
+    for (var i = 0, length = json.length; i < length; i++) {
+      var data = json[i],
+        latLng = new google.maps.LatLng(data.lat, data.lng);
+
+      // Creating a marker and putting it on the map
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        title: data.title
+      });
+
+      // Creating a closure to retain the correct data, notice how I pass the current data in the loop into the closure (marker, data)
+      (function(marker, data) {
+
+        // Attaching a click event to the current marker
+        google.maps.event.addListener(marker, "click", function(e) {
+          infoWindow.setContent(data.description);
+          infoWindow.open(map, marker);
+        });
+
+
+      })(marker, data);
+
+}
+
+
+
+}
+    
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCXph4Sx9MklyoSlZ4JH-FCryYgRRgWi4&callback=initMap"
+        async defer></script>

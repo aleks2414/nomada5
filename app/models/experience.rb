@@ -9,6 +9,9 @@ class Experience < ActiveRecord::Base
 	validates :tacto, :inclusion => 1..10
 	validates :gusto, :inclusion => 1..10
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   def average_rating
     reviews.count == 0 ? 0 : reviews.average(:star).round(2)
   end

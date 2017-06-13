@@ -5,9 +5,11 @@
 	<% @reviews.order("id desc").limit(6).each do |r| %>
 
 		<div class="row">
+		<div class="col-md-4">
 				<div id="stars_<%= r.id %>"></div>
 				<div><%= r.created_at.strftime("%v") %></div>
 				<div><%= r.comment %></div>
+		</div>
 		</div>
 
 

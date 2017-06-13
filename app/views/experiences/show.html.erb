@@ -198,6 +198,7 @@
             var mapCanvas = document.getElementById('map');
             var mapOptions = {
               center: new google.maps.LatLng(<%= @experience.latitude %>, <%= @experience.longitude %>),
+              scrollwheel: false,
               zoom: 10,
               mapTypeId: google.maps.MapTypeId.ROADMAP
             }
@@ -234,6 +235,22 @@
 
   </div>
 </div>
+
+
+
+    <!-- Close by Rooms -->
+    <div class="container">
+    <div class="row">
+    <h3 class="center upper">Near by</h3>
+    <hr>
+      <% for experience in @experience.nearbys(10) %>
+      <%= render 'nearbys' %>
+
+      
+
+      <% end %>
+    </div>
+    </div>
 
 
 <br><br>
