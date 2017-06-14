@@ -3,7 +3,7 @@
 <% @experiences.each do |experience| %>
 			<div class="col-sm-4">
 				<div id="card" class="weater">
-					<%= link_to experience do %>
+					<%= link_to trip_experience_path(@trip, experience) do %>
 					<div class="city-selected">
 						<article>
 

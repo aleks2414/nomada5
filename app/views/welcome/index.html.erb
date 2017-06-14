@@ -17,7 +17,7 @@
 <div id="map2"></div>
 
 
-<%= render 'experiences/expes' %>
+<%= render 'trips/trips' %>
 
 
 
@@ -39,7 +39,8 @@ function initMap() {
     // Creating the JSON data
     var json = [
         
-        <% @experiences.each do |experience| %>
+        <% @trips.each do |trip| %>
+        <% trip.experiences.each do |experience| %>
         {
             "title": "<%= experience.title %>",
             "lat": <%= experience.latitude %>,
@@ -47,13 +48,15 @@ function initMap() {
             "description": '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
-            '<h3 id="firstHeading" class="firstHeading"><%=experience.title %></h3>'+
+            '<h3 id="firstHeading" class="firstHeading upper"><%=experience.title %></h3>'+
             '<div id="bodyContent">'+
             '<p><%=experience.ciudad %> - <%=experience.pais %> </p>'+
-            '<%= link_to 'Ver más', experience_path(experience), class: "button button_blue" %> '+
+            '<p>by: - <%=experience.trip.nomad.name %> </p>'+
+            '<%= link_to 'Ver más', trip_experience_path(trip, experience), class: "button button_blue" %> '+
             '</div>'+
             '</div>'
         },
+        <% end %>
         <% end %>
         
     ]

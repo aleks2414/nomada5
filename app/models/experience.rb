@@ -1,7 +1,8 @@
 class Experience < ActiveRecord::Base
   belongs_to :nomad
-  has_many :photos
-  has_many :reviews
+  belongs_to :trip
+  has_many :photos, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
 	validates :vista, :inclusion => 1..10
 	validates :oido, :inclusion => 1..10

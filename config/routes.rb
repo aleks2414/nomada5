@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  
   get 'nomads/show'
 
-
-  resources :experiences do
+resources :trips do
+  resources :experiences, except: [:index] do
     resources :reviews
   end
+end
+
+
   devise_for :nomads
   resources :photos
   # The priority is based upon order of creation: first created -> highest priority.

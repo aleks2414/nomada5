@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170613154520) do
     t.string   "website"
     t.text     "advice"
     t.integer  "nomad_id"
+    t.integer  "trip_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "address"
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170613154520) do
   end
 
   add_index "experiences", ["nomad_id"], name: "index_experiences_on_nomad_id", using: :btree
+  add_index "experiences", ["trip_id"], name: "index_experiences_on_trip_id", using: :btree
 
   create_table "nomads", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -91,13 +93,28 @@ ActiveRecord::Schema.define(version: 20170613154520) do
     t.integer  "star",          default: 1
     t.text     "comment"
     t.integer  "experience_id"
+    t.integer  "trip_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
 
   add_index "reviews", ["experience_id"], name: "index_reviews_on_experience_id", using: :btree
+  add_index "reviews", ["trip_id"], name: "index_reviews_on_trip_id", using: :btree
+
+  create_table "trips", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "nomad_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "trips", ["nomad_id"], name: "index_trips_on_nomad_id", using: :btree
 
   add_foreign_key "experiences", "nomads"
+  add_foreign_key "experiences", "trips"
   add_foreign_key "photos", "experiences"
   add_foreign_key "reviews", "experiences"
+  add_foreign_key "reviews", "trips"
+  add_foreign_key "trips", "nomads"
 end

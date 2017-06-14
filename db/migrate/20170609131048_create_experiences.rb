@@ -22,6 +22,7 @@ class CreateExperiences < ActiveRecord::Migration
       t.string :website
       t.text :advice
       t.references :nomad, index: true, foreign_key: true
+      t.references :trip, index: true, foreign_key: true
 
       t.timestamps null: false
     end

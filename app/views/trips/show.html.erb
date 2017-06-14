@@ -1,0 +1,41 @@
+<div id="show_trip">
+	<h2 class=" upper"><%=@trip.name %></h2>
+	<h5 class="">by: <%= link_to "#{@trip.nomad.name}", nomad_path(@trip.nomad) %></h5>
+
+<br>
+<div id="iconoss">
+<% unless @trip.nomad.facebook.blank? %>
+				<a href="<%= @trip.nomad.facebook %>" class="subscribe_link">Facebook</a>
+			<% end %>
+			<% unless @trip.nomad.twitter.blank? %>
+				<a href="<%= @trip.nomad.twitter %>" class="subscribe_link">Twitter</a>
+			<% end %>
+			<% unless @trip.nomad.instagram.blank? %>
+				<a href="<%= @trip.nomad.instagram %>" class="subscribe_link">Instagram</a>
+<% end %>
+</div>
+
+
+	<hr>
+<div class="container">
+<p class="center"><%= @trip.description %></p>
+</div>
+</div>
+
+<hr>
+
+
+<% if current_nomad == @trip.nomad %>
+<div class="container">
+<%= link_to "Add Experience to #{@trip.name}", new_trip_experience_path(@trip), class:"button button_blue" %>
+</div>
+<% end %>
+
+<%= render 'experiences/expes' %>
+
+<% if current_nomad == @trip.nomad %>
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%= link_to 'Back', trips_path %> |
+<%= link_to 'Destroy', @trip, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+<% end %>
+

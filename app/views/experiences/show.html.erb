@@ -263,9 +263,9 @@
 
 <% if current_nomad == @experience.nomad %>
 
-<%= link_to 'Edit', edit_experience_path(@experience) %> |
-<%= link_to 'Back', experiences_path %> |
-<%= link_to 'Destroy', @experience, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+<%= link_to 'Edit', edit_trip_experience_path(@trip, @experience) %> |
+<%= link_to 'Back', :back %> |
+<%= link_to 'Destroy', trip_experience_path(@trip, @experience), method: :delete, data: { confirm: '¿Estás seguro?' } %>
 
 
 <% end %>

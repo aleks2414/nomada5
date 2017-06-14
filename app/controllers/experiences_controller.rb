@@ -1,5 +1,6 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip
   before_action :authenticate_nomad!, only: [:new, :edit]
 
   
@@ -10,7 +11,6 @@ class ExperiencesController < ApplicationController
   # GET /experiences
   # GET /experiences.json
   def index
-    @experiences = Experience.all
   end
 
   # GET /experiences/1
@@ -40,6 +40,7 @@ class ExperiencesController < ApplicationController
   # POST /experiences.json
   def create
     @experience = Experience.new(experience_params)
+    @experience.trip_id = @trip.id
     @experience.nomad_id = current_nomad.id
 
 if @experience.save
@@ -51,7 +52,7 @@ if @experience.save
       end
 
       @photos = @experience.photos
-      redirect_to edit_experience_path(@experience), notice: "Saved..."
+      redirect_to trip_path(@trip), notice: "Saved..."
     else
       render :new
     end
@@ -68,7 +69,7 @@ if @experience.save
         end
       end
 
-      redirect_to edit_experience_path(@experience), notice: "Updated..."
+      redirect_to trip_path(@trip), notice: "Updated..."
     else
       render :edit
     end
@@ -88,6 +89,10 @@ if @experience.save
     # Use callbacks to share common setup or constraints between actions.
     def set_experience
       @experience = Experience.find(params[:id])
+    end
+
+    def set_trip
+      @trip = Trip.find(params[:trip_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

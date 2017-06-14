@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="row">	
+<% @trips.each do |trip| %>
+			<div class="col-sm-4">
+				<div id="card" class="weater">
+					<%= link_to trip do %>
+					<div class="city-selected">
+						<article>
+
+							<div class="info">
+								<div class="city"><span></span> <%= trip.name %></div>
+								<div class="night"></div>
+
+								<div class="temp"><%= trip.created_at.strftime(" %b %d") %></div>
+<br><br>
+								<div class="wind">
+									<span><%#= link_to "#{trip.nomad.name}", nomad_path(trip.nomad) %></span>
+								</div>
+							</div>
+						</article>
+						
+						
+						<figure>
+							<%= image_tag src="prueba.jpg" %>
+						</figure>
+		
+					</div>
+					<% end %>
+					
+					<div class="days">
+						<div class="row row-no-gutter">
+
+							<div class="col-md-6">
+								<div class="day">
+									<%= link_to "#{trip.nomad.name}", nomad_path(trip.nomad), class: "button button_blue" %>
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="day">
+									<h1><i class="material-icons md-48">remove_red_eye</i><%= trip.name %></h1>
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+<% end %>
+</div>
+</div>

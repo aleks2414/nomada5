@@ -4,4 +4,5 @@ class Nomad < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :experiences
+  has_many :trips
 end

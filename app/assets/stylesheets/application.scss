@@ -53,6 +53,8 @@ p, a {
   a {
     &:hover {
       text-decoration: none;
+      background-color: transparent;
+      color: $red;
     }
   }
 
@@ -791,3 +793,31 @@ figure {
     }
   }
 }
+
+.upper {
+  text-transform: uppercase;
+}
+
+
+#show_trip {
+  text-align: center;
+}
+
+
+.subscribe_link {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+      color: white;
+      display: inline;
+      background: $red;
+      border-radius: 3px;
+      padding: .5rem 1rem;
+      margin: 0 .5rem;
+      text-decoration: none;
+      &:hover {
+        background: darken($red, 10%);
+        color: white;
+      }
+    }
