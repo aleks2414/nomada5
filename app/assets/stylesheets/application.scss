@@ -860,3 +860,45 @@ figure {
     font-family: 'Gotham_bold', sans-serif !important;
   }
 }
+
+.numberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    
+    background: $grey;
+    border: 2px solid $red;
+    color: $red;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+#derecho {
+  li {
+    background-color: $grey;
+    border: solid 2px transparent;
+    padding: 10px;
+    margin-bottom: 10px;
+    &:hover {
+      border: solid 2px $red;
+    }
+    
+    h4 {
+      margin-top: -35px;
+      padding-left: 45px;
+    }
+
+    h3 {
+      font-size: 15px;
+    }
+
+  }
+}
+
+.active2 {
+  border: solid 2px $red !important; 
+}

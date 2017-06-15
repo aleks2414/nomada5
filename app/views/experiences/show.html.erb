@@ -1,35 +1,76 @@
-<div id="show">
-  <div class="city-selected">
-    <article>
+<br><br><div id="show_trip">
+<h1 class=" upper"><%=@trip.name %></h1>
+<h5 class="">by: <%= link_to "#{@trip.nomad.name}", nomad_path(@trip.nomad) %></h5>
 
-      <div class="info">
-        <br>
-        <div class="temp"><%= @experience.title %></div>
-        <br><br>
-        <div class="wind">
-          <span><%= @experience.pais %> - <%= @experience.ciudad %></span>
-        </div>
-      </div>
-    </article>
-
-
-    <figure>
-      <%= image_tag @experience.photos[0].image.url if @experience.photos.length > 0 %>
-    </figure>
-    
-  </div>
+<br>
+<div id="iconoss">
+  <% unless @trip.nomad.facebook.blank? %>
+  <a href="<%= @trip.nomad.facebook %>" class="subscribe_link">Facebook</a>
+  <% end %>
+  <% unless @trip.nomad.twitter.blank? %>
+  <a href="<%= @trip.nomad.twitter %>" class="subscribe_link">Twitter</a>
+  <% end %>
+  <% unless @trip.nomad.instagram.blank? %>
+  <a href="<%= @trip.nomad.instagram %>" class="subscribe_link">Instagram</a>
+  <% end %>
 </div>
 
 
-<div id="show_body">
-  <div class="col-md-10 col-md-offset-1">
-    <div id="background">
-      <div class="row-fluid">
-        <div class="col-md-6">
+<hr>
+<div class="container">
+  <p class="center"><%= @trip.description %></p>
+</div>
+</div>
+
+<hr>
+
+
+
+<div id="show_new">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div id="izquiero">
+        <div class="col-md-7 col-md-offset-1">
+
+
           <div id="izq">
             <h4><%= @experience.title %></h4>
             <h6><%= @experience.ciudad %> - <%= @experience.pais %></h6>
             <p><%= @experience.address%></p>
+
+            <!-- Carousel -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+              <% if @photos %>
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <% @photos.each do |photo| %>
+                <li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
+                <% end %> 
+              </ol>       
+              <% end %>     
+
+              <div class="carousel-inner" role="listbox">
+                <% if @photos %>        
+                <% @photos.each do |photo| %>
+                <div class="item <%= 'active' if photo.id == @photos[0].id %>">          
+                  <%= image_tag photo.image.url() %>
+                </div>
+                <% end %> 
+                <% end %>
+              </div>
+
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <!-- End Carousel -->
+
             <br>
             <h5>DESCRIPCIÓN:</h5>
             <p><%= @experience.description %></p>
@@ -97,180 +138,120 @@
             <h5>CONSEJO:</h5>
             <p><%= @experience.advice %></p>
 
-<br>
-            <h5>NOMADA:</h5>
-            <p><%= link_to "#{@experience.nomad.name}", nomad_path(@experience.nomad), class:"button button_blue" %></p>
-          </div>
-        </div>
+            <br>
 
-        <div class="col-md-6">
-          <div id="sentidos">
             <div class="row">
-              <ul>
-                <li>
-                  <div class="day">
-                    <h1><%= @experience.vista %><br> <i class="material-icons md-48">remove_red_eye</i></h1>
-                  </div>
-                </li>
-                <!--  -->
-                <li>
-                  <div class="day">
-                    <h1><%= @experience.olfato %><br> <i class="material-icons md-48">local_florist</i></h1>
-                  </div>
-                </li>
-                <!--  -->
-                <li>
-                  <div class="day">
-                    <h1><%= @experience.oido%> <br><i class="material-icons md-48">hearing</i></h1>
-                  </div>
-                </li>
-                <!--  -->
-                <li>
-                  <div class="day">
-                    <h1><%= @experience.gusto%> <br><i class="material-icons md-48">local_pizza</i></h1>
-                  </div>
-                </li>
-                <!--  -->
-                <li>
-                  <div class="day">
-                    <h1><%= @experience.tacto%> <br><i class="material-icons md-48">pan_tool</i></h1>
-                  </div>
-                </li>
-
-              </ul>
+              <%= render 'shared/share' %>          
             </div>
+
+
+
+
+
+
           </div>
+        </div>
 
-          <!-- Carousel -->
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-            <% if @photos %>
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <% @photos.each do |photo| %>
-              <li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
-              <% end %> 
-            </ol>       
-            <% end %>     
-
-            <div class="carousel-inner" role="listbox">
-              <% if @photos %>        
-              <% @photos.each do |photo| %>
-              <div class="item <%= 'active' if photo.id == @photos[0].id %>">          
-                <%= image_tag photo.image.url() %>
-              </div>
-              <% end %> 
+        <div id="derecho">
+          <div class="col-md-3">
+            <ul>
+              <% @experiences.each_with_index do |experience, i| %>
+              <%= link_to trip_experience_path(@trip, experience) do %>
+              <li class="<%= 'active2' if current_page?(trip_experience_path(@trip, experience)) %>">
+                <div class="numberCircle"><%= i+1 %></div>
+                <h4><%= experience.title.truncate(35) %></h4> <br>
+                <h5><%= experience.created_at.strftime(" %b %d") %></h5>
+                <h3><%= experience.pais %> - <%= experience.ciudad %></h3>            
+              </li>
               <% end %>
-            </div>
-
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <!-- End Carousel -->
-          <div class="row">
-            <%= render 'shared/share' %>          
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Google Map -->
-    <div class="row">
-      <div class="col-md-12">
-
-        <div id="map"></div>
-
-        <style>
-          #map {
-            margin-top: 4rem;
-            width: 100%;
-            height: 400px;
-          }
-        </style>
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCXph4Sx9MklyoSlZ4JH-FCryYgRRgWi4&callback=initialize"
-        async defer></script>
-        <script>
-          function initialize() {
-            var mapCanvas = document.getElementById('map');
-            var mapOptions = {
-              center: new google.maps.LatLng(<%= @experience.latitude %>, <%= @experience.longitude %>),
-              scrollwheel: false,
-              zoom: 10,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-
-            var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(<%= @experience.latitude %>, <%= @experience.longitude %>),
-              title: "Nomada5" 
-            });
-
-            marker.setMap(map);
-          }
-          google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-
-
-      </div>
-    </div>
-
-    <!-- Reviews -->
-    <div class="row">
-      <div class="col-md-12">
-        <h3>Reviews: <%= @experience.average_rating %> (<%= @reviews.count %>)</h3>
-        <div class="container">
-          <div>
-            <%= render 'review/review' %>
-          </div>
-          <div>
-            <%= render 'review/list' %>
+              <% end %>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-</div>
 
 
 
-    <!-- Close by Rooms -->
-    <div class="container">
-    <div class="row">
-    <h3 class="center upper">Near by</h3>
-    <hr>
-      <% for experience in @experience.nearbys(10) %>
-      <%= render 'nearbys' %>
 
-      
 
-      <% end %>
+
+
+  <!-- Google Map -->
+  <div class="row">
+    <div class="col-md-12">
+
+      <div id="map"></div>
+
+      <style>
+        #map {
+          margin-top: 4rem;
+          width: 100%;
+          height: 400px;
+        }
+      </style>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCXph4Sx9MklyoSlZ4JH-FCryYgRRgWi4&callback=initialize"
+      async defer></script>
+      <script>
+        function initialize() {
+          var mapCanvas = document.getElementById('map');
+          var mapOptions = {
+            center: new google.maps.LatLng(<%= @experience.latitude %>, <%= @experience.longitude %>),
+            scrollwheel: false,
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+          var map = new google.maps.Map(mapCanvas, mapOptions);
+
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= @experience.latitude %>, <%= @experience.longitude %>),
+            title: "Nomada5" 
+          });
+
+          marker.setMap(map);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
+
+
     </div>
+  </div>
+
+  <!-- Reviews -->
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Reviews: <%= @experience.average_rating %> (<%= @reviews.count %>)</h3>
+      <div class="container">
+        <div>
+          <%= render 'review/review' %>
+        </div>
+        <div>
+          <%= render 'review/list' %>
+        </div>
+      </div>
     </div>
+  </div>
+
+
+
 
 
 <br><br>
 <div class="container">
-<div class="row">
+  <div class="row">
 
-<% if current_nomad == @experience.nomad %>
+    <% if current_nomad == @experience.nomad %>
 
-<%= link_to 'Edit', edit_trip_experience_path(@trip, @experience) %> |
-<%= link_to 'Back', :back %> |
-<%= link_to 'Destroy', trip_experience_path(@trip, @experience), method: :delete, data: { confirm: '¿Estás seguro?' } %>
+    <%= link_to 'Edit', edit_trip_experience_path(@trip, @experience) %> |
+    <%= link_to 'Back', :back %> |
+    <%= link_to 'Destroy', trip_experience_path(@trip, @experience), method: :delete, data: { confirm: '¿Estás seguro?' } %>
 
 
-<% end %>
+    <% end %>
 
-</div>
+  </div>
 </div>
 
 <br><br>

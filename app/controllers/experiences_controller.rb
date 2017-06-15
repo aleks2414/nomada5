@@ -18,6 +18,7 @@ class ExperiencesController < ApplicationController
   def show
     @photos = @experience.photos
     @reviews = @experience.reviews
+    @experiences = @trip.experiences
 
   end
 
