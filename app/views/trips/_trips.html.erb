@@ -1,53 +1,39 @@
 <div class="container">
-	<div class="row">	
-<% @trips.each do |trip| %>
+	<div class="row">
+		<% @trips.each do |trip| %>
 			<div class="col-sm-4">
-				<div id="card" class="weater">
-					<%= link_to trip do %>
-					<div class="city-selected">
-						<article>
+				<div id="magic_card">
+				
+				<div class="imagen">
+				<% trip.experiences.each do |experience| %>
+					<%= image_tag experience.photos[0].image if experience.photos.length > 0 %>
+				<% end %>
+				</div>
+					<h2><%= trip.name.truncate(30) %></h2>
+					<hr>
+					<h3>	
+						<% trip.experiences.each do |experience| %>
+								
+								<%if experience == trip.experiences.first%>
 
-							<div class="info">
-								<div class="city"><span></span> <%= trip.name %></div>
-								<div class="night"></div>
+								<%= experience.created_at.strftime(" %b %d") %> -
 
-								<div class="temp"><%= trip.created_at.strftime(" %b %d") %></div>
-<br><br>
-								<div class="wind">
-									<span><%#= link_to "#{trip.nomad.name}", nomad_path(trip.nomad) %></span>
-								</div>
-							</div>
-						</article>
-						
-						
-						<figure>
-							<%= image_tag src="prueba.jpg" %>
-						</figure>
-		
+								<% elsif experience == trip.experiences.last%>
+
+								<%= experience.created_at.strftime(" %b %d") %>
+
+								<%end%>
+								
+								<% end %>
+					</h3>
+					<div class="row">
+							<h4>	<%= trip.experiences.count %> experiences </h4>
+
+							<h4><%= link_to "by: #{trip.nomad.name}", nomad_path(trip.nomad), class: "button" %></h4>
 					</div>
-					<% end %>
-					
-					<div class="days">
-						<div class="row row-no-gutter">
-
-							<div class="col-md-6">
-								<div class="day">
-									<%= link_to "#{trip.nomad.name}", nomad_path(trip.nomad), class: "button button_blue" %>
-								</div>
-							</div>
-							
-							<div class="col-md-6">
-								<div class="day">
-									<h1><i class="material-icons md-48">remove_red_eye</i><%= trip.name %></h1>
-								</div>
-							</div>
-
-
-
-						</div>
-					</div>
+				<%= link_to "Go to trip", trip, class: "button button_red2 button_block" %>
 				</div>
 			</div>
-<% end %>
-</div>
+		<% end %>
+	</div>
 </div>

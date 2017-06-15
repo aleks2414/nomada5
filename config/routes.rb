@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'nomads/show'
 
 resources :trips do
-  resources :experiences, except: [:index] do
+  resources :experiences do
     resources :reviews
   end
 end
@@ -16,11 +16,11 @@ end
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+  root 'welcome#index'
 
    resources :ratings, only: [:update, :create]
 
-   get '/experiences_map' => 'experiences#map'
+  get '/experiences_map' => 'welcome#map'
 
   resources :nomads, only: [:show]
 

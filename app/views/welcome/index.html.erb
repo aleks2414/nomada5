@@ -1,26 +1,34 @@
 <div id="titulos">
 <%= image_tag src="logo.png" %> <br><br>
-	<h2>Conoce el mundo a <strong>través</strong> de los sentidos</h2>
+	<h2>Let your experiences tell your trips</h2>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ab veritatis dolorum aut minus et id perspiciatis, dolores inventore, ea, cum cupiditate autem ullam commodi, ut eligendi in culpa repellendus.</p>
 
 			<ul>
 				<li>
-					<%= link_to "Camino nómada", experiences_map_path, class: "button button_red" %>
+					<%= link_to "Nomad trip", experiences_map_path, class: "button button_red" %>
 				</li>
 				<li>
-					<%= link_to "Hazte Nómada", root_path, class: "button button_blue" %>
+					<%= link_to "Join the Nomad Club", root_path, class: "button button_blue" %>
 				</li>
 			</ul>
 
-</div>
 
-<div id="map2"></div>
 
+<br><br>
+<h4 class="center upper">Our favorites Trips</h4>
+<hr>
 
 <%= render 'trips/trips' %>
 
 
 
+<br><br>
+<h2>More than <%= @trips_count %> trips</h2>
+<h4>And <%= @experiences_count %> world wide experiences</h4>
+
+</div>
+
+<div id="map2"></div>
 
 
 <script>

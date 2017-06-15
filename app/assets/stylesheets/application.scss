@@ -41,7 +41,7 @@ color: #515151;
 }     
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Gotham_bold', sans-serif !important;
+    
   color: #4d545d;
 }
 
@@ -253,7 +253,7 @@ Main components
   background: #fff;
   position: relative;
   margin-bottom: 50px;
-  margin-top: 100px;
+  margin-top: 30px;
 
   -webkit-box-shadow: 0px 1px 10px 0px rgba(207,207,207,1);
   -moz-box-shadow: 0px 1px 10px 0px rgba(207,207,207,1);
@@ -561,6 +561,18 @@ hr.red {
 
 }
 
+.button_red2 {
+  color: white !important;
+  background-color: $red;
+  border: solid 2px white;
+  &:hover {
+    color: $red !important;
+    background-color: white;
+    border: solid 2px $red;
+  }
+
+}
+
 .button_blue {
   color: $blue;
   background-color: white;
@@ -801,6 +813,7 @@ figure {
 
 #show_trip {
   text-align: center;
+  margin-top: 5rem;
 }
 
 
@@ -821,3 +834,29 @@ figure {
         color: white;
       }
     }
+
+
+#magic_card {
+  background-color: white;
+  padding: 10px 12px;
+  border: solid 2px $grey;
+  height: 400px;
+
+  .imagen {
+  height:100px;
+  line-height:100px;
+  overflow:hidden;
+  text-align:center;
+  width:100%;
+
+  img {
+    margin:-100%;
+  }
+  }
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: 'Gotham_bold', sans-serif !important;
+  }
+}

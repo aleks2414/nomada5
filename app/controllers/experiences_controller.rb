@@ -18,22 +18,17 @@ class ExperiencesController < ApplicationController
   def show
     @photos = @experience.photos
     @reviews = @experience.reviews
+
   end
 
   # GET /experiences/new
   def new
-    @experience = Experience.new
+    @experience = @trip.experiences.new
   end
 
   # GET /experiences/1/edit
   def edit
-
-    if current_nomad.id == @experience.nomad.id
-      @photos = @experience.photos
-    else
-      redirect_to root_path, notice: "You don't have permission."
-    end
-
+@photos = @experience.photos
   end
 
   # POST /experiences
@@ -52,7 +47,7 @@ if @experience.save
       end
 
       @photos = @experience.photos
-      redirect_to trip_path(@trip), notice: "Saved..."
+      redirect_to edit_trip_experience_path(@trip, @experience), notice: "Saved..."
     else
       render :new
     end
@@ -61,7 +56,7 @@ if @experience.save
   # PATCH/PUT /experiences/1
   # PATCH/PUT /experiences/1.json
   def update
-    if @experience.update(experience_params)
+      if @experience.update(experience_params)
 
       if params[:images] 
         params[:images].each do |image|
@@ -69,7 +64,7 @@ if @experience.save
         end
       end
 
-      redirect_to trip_path(@trip), notice: "Updated..."
+      redirect_to edit_trip_experience_path(@trip,@experience), notice: "Updated..."
     else
       render :edit
     end

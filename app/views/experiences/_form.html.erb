@@ -1,4 +1,4 @@
-<%= form_for([@trip, @trip.experiences.build], html: { multipart: true }) do |f| %>
+<%= form_for ([@trip, @experience]), :html => {:multipart => true} do |f| %>
 <% unless @experience.errors.empty? %>
   <script type="text/javascript">
     <% @experience.errors.full_messages.each do |msg| %>
