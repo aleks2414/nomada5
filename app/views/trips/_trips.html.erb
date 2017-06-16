@@ -6,7 +6,7 @@
 				
 				<div class="imagen">
 				<% trip.experiences.each do |experience| %>
-					<%= image_tag experience.photos[0].image if experience.photos.length > 0 %>
+					<%= image_tag experience.photos[0].image(:medium) if experience.photos.length > 0 %>
 				<% end %>
 				</div>
 					<h2><%= trip.name.truncate(30) %></h2>

@@ -14,10 +14,11 @@ class TripsController < ApplicationController
     @experiences = @trip.experiences
 
 
+    if @trip.experiences[0].photos.present?
     prepare_meta_tags(title: @trip.name,
                       description: @trip.description.truncate(50), 
                       keywords: @trip.name.split(","),
-                      image: @trip.experiences[0].photos[0].image,
+                      image: @trip.experiences[0].photos[0].image, 
                       og: {
         url: request.original_url,
         site_name: @trip.name,
@@ -34,7 +35,7 @@ class TripsController < ApplicationController
         image: @trip.experiences[0].photos[0].image,
       }
       )
-
+      end
 
   end
 

@@ -4,7 +4,7 @@ class NomadsController < ApplicationController
   	@trips = @nomad.trips	
 
 prepare_meta_tags(title: @nomad.name,
-                      description: @nomad.description.truncate(50), 
+                      description: @nomad.try(:description).truncate(50), 
                       keywords: @nomad.name.split(","),
                       image: @nomad.avatar,
                       og: {

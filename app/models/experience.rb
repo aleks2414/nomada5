@@ -4,11 +4,6 @@ class Experience < ActiveRecord::Base
   has_many :photos, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-	validates :vista, :inclusion => 1..10
-	validates :oido, :inclusion => 1..10
-	validates :olfato, :inclusion => 1..10
-	validates :tacto, :inclusion => 1..10
-	validates :gusto, :inclusion => 1..10
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

@@ -46,13 +46,25 @@ before_action :prepare_meta_tags, if: "request.get?"
   end
   # ...
 
-
   
   protected
 
 def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :password_confirmation) }
   devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password, :name, :description, :facebook, :twitter, :instagram, :website, :photo, :pais, :ciudad, :admin, :avatar) }
+end
+
+
+def stored_location_for(resource)
+  nil
+end
+
+def after_sign_in_path_for(resource)
+    edit_nomad_registration_path
+end
+
+def after_sign_up_path_for(resource)
+    edit_nomad_registration_path
 end
 
 end

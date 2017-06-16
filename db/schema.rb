@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 20170616170713) do
   create_table "experiences", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.float    "vista",          default: 0.0
-    t.float    "olfato",         default: 0.0
-    t.float    "gusto",          default: 0.0
-    t.float    "oido",           default: 0.0
-    t.float    "tacto",          default: 0.0
+    t.boolean  "vista",          default: false
+    t.boolean  "olfato",         default: false
+    t.boolean  "gusto",          default: false
+    t.boolean  "oido",           default: false
+    t.boolean  "tacto",          default: false
     t.float    "latitude"
     t.float    "longitude"
     t.float    "expe"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20170616170713) do
     t.text     "advice"
     t.integer  "nomad_id"
     t.integer  "trip_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "address"
     t.string   "pais"
     t.string   "ciudad"

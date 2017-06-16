@@ -38,6 +38,55 @@
             <h6><%= @experience.ciudad %> - <%= @experience.pais %></h6>
             <p><%= @experience.address%></p>
 
+            <br><br>
+
+          <div id="sentidos">
+            <div class="row">
+              <ul>
+              <% if @experience.vista? %>
+                <li>
+                  <div class="day">
+                    <i class="material-icons md-48">remove_red_eye</i>
+                  </div>
+                </li>
+              <% end %>
+                <!--  -->
+                <% if @experience.olfato? %>
+                <li>
+                  <div class="day">
+                    <i class="material-icons md-48">local_florist</i>
+                  </div>
+                </li>
+              <% end %>
+                <!--  -->
+                <% if @experience.oido? %>
+                <li>
+                  <div class="day">
+                    <i class="material-icons md-48">hearing</i>
+                  </div>
+                </li>
+              <% end %>
+                <!--  -->
+                <% if @experience.gusto? %>
+                <li>
+                  <div class="day">
+                    <i class="material-icons md-48">local_pizza</i>
+                  </div>
+                </li>
+              <% end %>
+                <!--  -->
+                <% if @experience.tacto? %>
+                <li>
+                  <div class="day">
+                    <i class="material-icons md-48">pan_tool</i>
+                  </div>
+                </li>
+              <% end %>
+
+              </ul>
+            </div>
+          </div>
+
             <!-- Carousel -->
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -54,7 +103,7 @@
                 <% if @photos %>        
                 <% @photos.each do |photo| %>
                 <div class="item <%= 'active' if photo.id == @photos[0].id %>">          
-                  <%= image_tag photo.image.url() %>
+                  <%= image_tag photo.image.url(:large) %>
                 </div>
                 <% end %> 
                 <% end %>

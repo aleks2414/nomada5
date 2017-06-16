@@ -21,6 +21,7 @@ class ExperiencesController < ApplicationController
     @experiences = @trip.experiences
 
 
+if @photos.present?
     prepare_meta_tags(title: @experience.title,
                       description: @experience.description.truncate(50), 
                       keywords: @experience.title.split(","),
@@ -41,6 +42,7 @@ class ExperiencesController < ApplicationController
         image: @experience.photos[0].image,
       }
       )
+  end
 
   end
 

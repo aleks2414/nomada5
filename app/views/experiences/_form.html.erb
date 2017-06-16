@@ -9,11 +9,11 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, required: true %>
   </div>
 
 <div class="row">
@@ -21,14 +21,14 @@
   <div class="col-sm-6">
   <div class="field">
     <%= f.label :country %><br>
-    <%= f.text_field :pais %>
+    <%= f.text_field :pais, required: true %>
   </div>
   </div>
 
   <div class="col-sm-6">
   <div class="field">
     <%= f.label :city %><br>
-    <%= f.text_field :ciudad %>
+    <%= f.text_field :ciudad, required: true %>
   </div>
   </div>
 
@@ -68,36 +68,36 @@
 
   <div class="col-sm-2 col-sm-offset-1">
   <div class="field">
-    <%= f.label :vista %><br>
-    <%= f.text_field :vista %>
+    <%= f.label :Sight %><br>
+    <%= f.check_box :vista %>
   </div>
   </div>
 
   <div class="col-sm-2">
   <div class="field">
-    <%= f.label :olfato %><br>
-    <%= f.text_field :olfato %>
+    <%= f.label :Smell %><br>
+    <%= f.check_box :olfato %>
   </div>
   </div>
 
   <div class="col-sm-2">
   <div class="field">
-    <%= f.label :gusto %><br>
-    <%= f.text_field :gusto %>
+    <%= f.label :Taste %><br>
+    <%= f.check_box :gusto %>
   </div>
   </div>
 
   <div class="col-sm-2">
   <div class="field">
-    <%= f.label :oido %><br>
-    <%= f.text_field :oido %>
+    <%= f.label :Hearing %><br>
+    <%= f.check_box :oido %>
   </div>
   </div>
 
   <div class="col-sm-2">
   <div class="field">
-    <%= f.label :tacto %><br>
-    <%= f.text_field :tacto %>
+    <%= f.label :Touch %><br>
+    <%= f.check_box :tacto %>
   </div>
   </div>
 
@@ -114,7 +114,7 @@
 
   <div class="field">
     <%= f.label :Currency %><br>
-    <%= f.text_field :currency %>
+    <%= f.text_field :currency, required: true %>
   </div>
 
   <div class="field">
@@ -124,7 +124,7 @@
 
   <div class="field">
     <%= f.label :Aprox_time %><br>
-    <%= f.text_field :aprox_time %>
+    <%= f.text_field :aprox_time, required: true %>
   </div>
   <div class="field">
     <%= f.label :People_warm %><br>
@@ -132,7 +132,7 @@
   </div>
   <div class="field">
     <%= f.label :Language %><br>
-    <%= f.text_field :idioma %>
+    <%= f.text_field :idioma, required: true %>
   </div>
   <div class="field">
     <%= f.label :is_the_experience_risky? %><br>
@@ -152,7 +152,7 @@
   </div>
   <div class="field">
     <%= f.label :advice %><br>
-    <%= f.text_area :advice %>
+    <%= f.text_area :advice, required: true %>
   </div>
 
 
