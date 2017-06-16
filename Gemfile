@@ -32,6 +32,8 @@ gem 'paperclip'
 gem 'geocoder'
 gem 'jquery-ui-rails'
 gem 'ransack'
+gem 'aws-sdk', '~> 2.3'
+gem "figaro"
 
 
 # Use ActiveModel has_secure_password
