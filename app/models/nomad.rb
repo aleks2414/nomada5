@@ -5,4 +5,8 @@ class Nomad < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :experiences
   has_many :trips
+
+extend FriendlyId
+friendly_id :name, use: [:finders, :slugged]
+
 end

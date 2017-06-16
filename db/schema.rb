@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613154520) do
+ActiveRecord::Schema.define(version: 20170616140551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +44,11 @@ ActiveRecord::Schema.define(version: 20170613154520) do
     t.string   "address"
     t.string   "pais"
     t.string   "ciudad"
+    t.string   "slug"
   end
 
   add_index "experiences", ["nomad_id"], name: "index_experiences_on_nomad_id", using: :btree
+  add_index "experiences", ["slug"], name: "index_experiences_on_slug", unique: true, using: :btree
   add_index "experiences", ["trip_id"], name: "index_experiences_on_trip_id", using: :btree
 
   create_table "nomads", force: :cascade do |t|
@@ -72,10 +74,12 @@ ActiveRecord::Schema.define(version: 20170613154520) do
     t.string   "pais"
     t.string   "ciudad"
     t.boolean  "admin",                  default: false
+    t.string   "slug"
   end
 
   add_index "nomads", ["email"], name: "index_nomads_on_email", unique: true, using: :btree
   add_index "nomads", ["reset_password_token"], name: "index_nomads_on_reset_password_token", unique: true, using: :btree
+  add_index "nomads", ["slug"], name: "index_nomads_on_slug", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.integer  "experience_id"
@@ -107,9 +111,11 @@ ActiveRecord::Schema.define(version: 20170613154520) do
     t.integer  "nomad_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "slug"
   end
 
   add_index "trips", ["nomad_id"], name: "index_trips_on_nomad_id", using: :btree
+  add_index "trips", ["slug"], name: "index_trips_on_slug", unique: true, using: :btree
 
   add_foreign_key "experiences", "nomads"
   add_foreign_key "experiences", "trips"
