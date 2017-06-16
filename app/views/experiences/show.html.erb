@@ -72,34 +72,36 @@
             <!-- End Carousel -->
 
             <br>
-            <h5>DESCRIPCIÓN:</h5>
+            <h5>DESCRIPTION:</h5>
             <p><%= @experience.description %></p>
             <br>
             <div id="icons">
               <div class="row">
                 <div class="col-sm-6">
                   <div>
-                    <span class="material-icons md-24">mood</span><h6> Experiencia: <%= @experience.expe %></h6>
+                    <span class="material-icons md-24">mood</span><h6> Experience: <%= @experience.expe %></h6>
                   </div>
 
                   <div>
-                    <span class="material-icons md-24">flag</span><h6> Idioma: <%= @experience.idioma %></h6>
+                    <span class="material-icons md-24">flag</span><h6> Language: <%= @experience.idioma %></h6>
                   </div>
 
                   <div>
-                    <span class="material-icons md-24">local_atm</span><h6> Dinero: <%= @experience.money %></h6>
+                    <span class="material-icons md-24">monetization_on</span><h6> Currency: <%= @experience.currency %></h6>
                   </div>
 
                   <div>
-                    <span class="material-icons md-24">monetization_on</span><h6> Moneda: <%= @experience.currency %></h6>
+                    <span class="material-icons md-24">local_atm</span><h6> How much money: <%= @experience.money %></h6>
+                  </div>
+
+
+
+                  <div>
+                    <span class="material-icons md-24">timer</span><h6> Time experience lasts: <%= @experience.aprox_time %></h6>
                   </div>
 
                   <div>
-                    <span class="material-icons md-24">timer</span><h6> Tiempo aproximado: <%= @experience.aprox_time %></h6>
-                  </div>
-
-                  <div>
-                    <span class="material-icons md-24">face</span><h6> Gente: <%= @experience.gente %></h6>
+                    <span class="material-icons md-24">face</span><h6> People warm: <%= @experience.gente %></h6>
                   </div>
 
                 </div>
@@ -108,19 +110,19 @@
 
                   <% if !@experience.is_risky? %> 
                   <div>
-                    <span class="material-icons md-24">lock_outline</span><h6> Lugar Seguro</h6>
+                    <span class="material-icons md-24">lock_outline</span><h6> Safe experience</h6>
                   </div>
                   <% end %>
 
                   <% if @experience.is_internet? %> 
                   <div>
-                    <span class="material-icons md-24">web</span><h6> Tiene Internet</h6>
+                    <span class="material-icons md-24">web</span><h6>Internet Access</h6>
                   </div>
                   <% end %>
 
                   <% if @experience.is_reservation? %> 
                   <div>
-                    <span class="material-icons md-24">receipt</span><h6> Requiere Reservación</h6>
+                    <span class="material-icons md-24">receipt</span><h6>Reservation Needed</h6>
                   </div>
                   <% end %>
 
@@ -135,7 +137,7 @@
 
 
             <br>
-            <h5>CONSEJO:</h5>
+            <h5>Advice from <%= @trip.nomad.name %>:</h5>
             <p><%= @experience.advice %></p>
 
             <br>
@@ -276,7 +278,7 @@ function initMap() {
   </div>
 
   <!-- Reviews -->
-  <div class="row">
+  <div class="container">
     <div class="col-md-12">
       <h3>Reviews: <%= @experience.average_rating %> (<%= @reviews.count %>)</h3>
       <div class="container">

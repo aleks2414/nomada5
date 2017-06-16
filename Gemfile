@@ -34,6 +34,7 @@ gem 'jquery-ui-rails'
 gem 'ransack'
 gem 'aws-sdk', '~> 2.3'
 gem "figaro"
+gem 'meta-tags'
 
 
 # Use ActiveModel has_secure_password

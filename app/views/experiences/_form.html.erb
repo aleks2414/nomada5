@@ -20,30 +20,30 @@
 
   <div class="col-sm-6">
   <div class="field">
-    <%= f.label :pais %><br>
+    <%= f.label :country %><br>
     <%= f.text_field :pais %>
   </div>
   </div>
 
   <div class="col-sm-6">
   <div class="field">
-    <%= f.label :ciudad %><br>
+    <%= f.label :city %><br>
     <%= f.text_field :ciudad %>
   </div>
   </div>
 
 </div>
 <hr>
-<h4>Mi ubicación</h4>
+<h4>Experience Location</h4>
 
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address, id: "address" %>
+    <%= f.label :last_address %><br>
+    <%= f.text_field :address, :readonly => true, id: "address" %>
   </div>
 
 <div id="panel">
     <!--<input id="city_country" type="textbox" value="Berlin, Germany">-->
-    <input type="button" value="Cambiar mi ubicación" id="bucks" class="button button_red">
+    <input type="button" value="Change experience location" id="bucks" class="button button_red">
   </div>
   <div id="mapCanvas"></div>
   <div id="infoPanel">
@@ -62,7 +62,7 @@
 
   <br><br>
 
-<h4>Sentidos</h4>
+<h4>Senses</h4>
 
 <div class="row">
 
@@ -107,42 +107,43 @@
 
 
   <div class="field">
-    <%= f.label :Experiencia %><br>
+    <%= f.label :Experience %><br>
     <%= f.range_field :expe, :min=>0, :max=>10, :class=>"slide", :id=>"slider1"%>
   </div>
 
 
-
   <div class="field">
-    <%= f.label :Cuanto_dinero_llevo %><br>
-    <%= f.number_field :money %>
-  </div>
-  <div class="field">
-    <%= f.label :Moneda %><br>
+    <%= f.label :Currency %><br>
     <%= f.text_field :currency %>
   </div>
+
   <div class="field">
-    <%= f.label :tiempo_aproximado %><br>
+    <%= f.label :How_much_money? %><br>
+    <%= f.number_field :money %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Aprox_time %><br>
     <%= f.text_field :aprox_time %>
   </div>
   <div class="field">
-    <%= f.label :gente %><br>
+    <%= f.label :People_warm %><br>
     <%= f.range_field :gente, :min=>0, :max=>10, :class=>"slide", :id=>"slider1"%>
   </div>
   <div class="field">
-    <%= f.label :idioma %><br>
+    <%= f.label :Language %><br>
     <%= f.text_field :idioma %>
   </div>
   <div class="field">
-    <%= f.label :is_risky %><br>
+    <%= f.label :is_the_experience_risky? %><br>
     <%= f.check_box :is_risky %>
   </div>
   <div class="field">
-    <%= f.label :is_internet %><br>
+    <%= f.label :Does_it_have_internet_access? %><br>
     <%= f.check_box :is_internet %>
   </div>
   <div class="field">
-    <%= f.label :is_reservation %><br>
+    <%= f.label :Need_reservation? %><br>
     <%= f.check_box :is_reservation %>
   </div>
   <div class="field">

@@ -5,6 +5,48 @@ class ApplicationController < ActionController::Base
 
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+
+before_action :prepare_meta_tags, if: "request.get?"
+
+  def prepare_meta_tags(options={})
+    site_name   = "Nomada 5"
+    title       = site_name
+    description = "The new way to share your world trips through experiences"
+    image       = options[:image] || "http://www.nomada5.com/assets/logo.png"
+    current_url = request.url
+
+    # Let's prepare a nice set of defaults
+    defaults = {
+      site:        site_name,
+      title:       title,
+      image:       image,
+      description: description,
+      keywords:    %w[trip journeys experiences travel travelers backpackers backpack vactions world_office],
+      twitter: {
+        site_name: site_name,
+        site: '@nomada5',
+        card: 'summary',
+        description: description,
+        image: image
+      },
+      og: {
+        url: current_url,
+        site_name: site_name,
+        title: title,
+        image: image,
+        description: description,
+        type: 'website'
+      }
+    }
+
+    options.reverse_merge!(defaults)
+
+    set_meta_tags options
+  end
+  # ...
+
+
   
   protected
 

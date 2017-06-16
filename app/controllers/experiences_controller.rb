@@ -20,6 +20,28 @@ class ExperiencesController < ApplicationController
     @reviews = @experience.reviews
     @experiences = @trip.experiences
 
+
+    prepare_meta_tags(title: @experience.title,
+                      description: @experience.description.truncate(50), 
+                      keywords: @experience.title.split(","),
+                      image: @experience.photos[0].image,
+                      og: {
+        url: request.original_url,
+        site_name: @experience.title,
+        title: @experience.title,
+        image: @experience.photos[0].image,
+        description: @experience.description,
+        type: 'website'
+      },
+        twitter: {
+        site_name: @experience.title,
+        site: '@nomada5',
+        card: 'summary',
+        description: @experience.description,
+        image: @experience.photos[0].image,
+      }
+      )
+
   end
 
   # GET /experiences/new

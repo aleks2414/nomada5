@@ -12,6 +12,30 @@ class TripsController < ApplicationController
   # GET /trips/1.json
   def show
     @experiences = @trip.experiences
+
+
+    prepare_meta_tags(title: @trip.name,
+                      description: @trip.description.truncate(50), 
+                      keywords: @trip.name.split(","),
+                      image: @trip.experiences[0].photos[0].image,
+                      og: {
+        url: request.original_url,
+        site_name: @trip.name,
+        title: @trip.name,
+        image: @trip.experiences[0].photos[0].image,
+        description: @trip.description,
+        type: 'website'
+      },
+        twitter: {
+        site_name: @trip.name,
+        site: '@nomada5',
+        card: 'summary',
+        description: @trip.description,
+        image: @trip.experiences[0].photos[0].image,
+      }
+      )
+
+
   end
 
   # GET /trips/new
