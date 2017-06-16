@@ -12,22 +12,22 @@
 					<h2><%= trip.name.truncate(30) %></h2>
 					<hr>
 					<h3>	
-						<% trip.experiences.each do |experience| %>
+						<% trip.experiences.order("created_at asc").each do |experience| %>
 								
 								<%if experience == trip.experiences.first%>
 
-								<%= experience.created_at.strftime(" %b %d") %> -
+								<%= experience.created_at.strftime(" %b %d") %>
 
 								<% elsif experience == trip.experiences.last%>
 
-								<%= experience.created_at.strftime(" %b %d") %>
+								<%= experience.created_at.strftime(" %b %d") %> -
 
 								<%end%>
 								
 								<% end %>
 					</h3>
 					<div class="row">
-							<h4>	<%= trip.experiences.count %> experiences </h4>
+							<h4>- <%= trip.experiences.count %> experiences -</h4>
 
 							<h4><%= link_to "by: #{trip.nomad.name}", nomad_path(trip.nomad), class: "button" %></h4>
 					</div>

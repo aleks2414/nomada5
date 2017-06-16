@@ -155,11 +155,11 @@
         <div id="derecho">
           <div class="col-md-3">
             <ul>
-              <% @experiences.each_with_index do |experience, i| %>
+              <% @experiences.order("created_at asc").each_with_index do |experience, i| %>
               <%= link_to trip_experience_path(@trip, experience) do %>
               <li class="<%= 'active2' if current_page?(trip_experience_path(@trip, experience)) %>">
                 <div class="numberCircle"><%= i+1 %></div>
-                <h4><%= experience.title.truncate(35) %></h4> <br>
+                <h4><%= experience.title.truncate(35) %></h4>
                 <h5><%= experience.created_at.strftime(" %b %d") %></h5>
                 <h3><%= experience.pais %> - <%= experience.ciudad %></h3>            
               </li>
@@ -192,27 +192,83 @@
         }
       </style>
 
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCXph4Sx9MklyoSlZ4JH-FCryYgRRgWi4&callback=initialize"
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCXph4Sx9MklyoSlZ4JH-FCryYgRRgWi4&callback=initMap"
       async defer></script>
+
       <script>
-        function initialize() {
-          var mapCanvas = document.getElementById('map');
-          var mapOptions = {
-            center: new google.maps.LatLng(<%= @experience.latitude %>, <%= @experience.longitude %>),
-            scrollwheel: false,
-            zoom: 10,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          }
-          var map = new google.maps.Map(mapCanvas, mapOptions);
 
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(<%= @experience.latitude %>, <%= @experience.longitude %>),
-            title: "Nomada5" 
-          });
+function initMap() {
 
-          marker.setMap(map);
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
+    // Creating a new map
+    var map = new google.maps.Map(document.getElementById("map"), {
+
+
+          center: new google.maps.LatLng(<%=@experience.latitude %>, <%=@experience.longitude %>),
+
+
+          scrollwheel: false,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+
+    // Creating the JSON data
+    var json = [
+        
+        <% @experiences.order("created_at asc").each do |experience| %>
+        {
+            "title": "<%= experience.title %>",
+            "lat": <%= experience.latitude %>,
+            "lng": <%= experience.longitude%>,
+            "description": '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h3 id="firstHeading" class="firstHeading upper"><%=experience.title %></h3>'+
+            '<div id="bodyContent">'+
+            '<p><%=experience.ciudad %> - <%=experience.pais %> </p>'+
+            '<p>by: - <%=experience.trip.nomad.name %> </p>'+
+            '<%= link_to 'Ver más', trip_experience_path(@trip, experience), class: "button button_blue" %> '+
+            '</div>'+
+            '</div>'
+        },
+        <% end %>
+        
+    ]
+
+    // Creating a global infoWindow object that will be reused by all markers
+    var infoWindow = new google.maps.InfoWindow({
+      maxWidth: 200
+    });
+
+    // Looping through the JSON data
+    for (var i = 0, length = json.length; i < length; i++) {
+      var data = json[i],
+        latLng = new google.maps.LatLng(data.lat, data.lng);
+
+      // Creating a marker and putting it on the map
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        title: data.title
+      });
+
+      // Creating a closure to retain the correct data, notice how I pass the current data in the loop into the closure (marker, data)
+      (function(marker, data) {
+
+        // Attaching a click event to the current marker
+        google.maps.event.addListener(marker, "click", function(e) {
+          infoWindow.setContent(data.description);
+          infoWindow.open(map, marker);
+        });
+
+
+      })(marker, data);
+
+}
+
+}
+
+
       </script>
 
 

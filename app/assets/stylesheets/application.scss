@@ -841,6 +841,7 @@ figure {
   padding: 10px 12px;
   border: solid 2px $grey;
   height: 400px;
+  margin-bottom: 20px;
 
   .imagen {
   height:100px;
@@ -869,9 +870,9 @@ figure {
     height: 36px;
     padding: 8px;
     
-    background: $grey;
-    border: 2px solid $red;
-    color: $red;
+    background: $red;
+    border: 2px solid transparent;
+    color: white;
     text-align: center;
     font-size: 17px;
 }
@@ -888,12 +889,17 @@ figure {
     }
     
     h4 {
-      margin-top: -35px;
+      margin-top: -25px;
       padding-left: 45px;
+      font-size: 14px;
     }
 
     h3 {
       font-size: 15px;
+    }
+    h5 {
+      margin-top: 20px;
+      font-weight: 900;
     }
 
   }
@@ -901,4 +907,9 @@ figure {
 
 .active2 {
   border: solid 2px $red !important; 
+}
+
+#arrow {
+  margin-top: 30px;
+  text-align: center;
 }

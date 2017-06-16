@@ -1,25 +1,29 @@
 <div id="showing">
-<div class="container">
-	<div class="container_fluid">
-		<div class="col-sm-3">
-			<div class="imagen">
-				<%= image_tag (src='prueba.jpg') %>
-			</div>
-			<h4><%= @nomad.name %></h4>
+  <div class="container">
 
-			<p><%= @nomad.description.truncate(400)%></p>
+    <div class="imagen">
+      <%= image_tag (src='prueba.jpg') %>
+    </div>
+    <h4><%= @nomad.name %></h4>
 
-<br><br>
+    <div class="row">
+      <div class="col-sm-3">
+        <p><%= @nomad.description.truncate(400)%></p>
 
-	<div id="icons">
-              <div class="row">
-                  <div>
+        <div id="icons">
+          <div>
                     <span class="material-icons md-24">flag</span><h6> Country: <%= @nomad.pais %></h6>
                   </div>
 
                   <div>
                     <span class="material-icons md-24">location_city</span><h6> City: <%= @nomad.ciudad %></h6>
                   </div>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+      
+<div id="icons">
 
                   <% if @nomad.facebook.present? %> 
                   <div>
@@ -43,20 +47,14 @@
                     <span class="material-icons md-24">dvr</span><h6> Website: <br> <%= @nomad.website %></h6>
                   </div>
 
-              </div>
-            </div>
 
 
-		</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-		<div class="col-sm-9">
+<hr>
     <div id="titulos">
-    <div class="row">
 			<%= render 'trips/trips' %>
     </div>
-    </div>
-		</div>
-
-	</div>
-</div>
-</div>
