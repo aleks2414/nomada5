@@ -25,17 +25,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
-
+gem 'mail_form'
 gem 'devise'
-
 gem 'toastr-rails'
-
 gem 'paperclip'
-
 gem 'geocoder'
-
 gem 'jquery-ui-rails'
-
 gem 'ransack'
 
 

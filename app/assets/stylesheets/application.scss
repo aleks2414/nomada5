@@ -913,3 +913,39 @@ figure {
   margin-top: 30px;
   text-align: center;
 }
+
+#forma {
+  background-color: white;
+  padding: 3rem;
+  h3 {
+    text-transform: uppercase;
+    color: $red;
+    font-size: 3em;
+  }
+  p {
+    color: $dark_grey;
+  }
+  form {
+    margin-top: 3rem;
+  input[type="name"], input[type="email"], input[type="number"], input[type="date"], input[type="text"], textarea, select {
+background-color: #f7f7f7;
+width: 200px;
+border: none;
+padding-left: 1rem;
+border-bottom: solid 2px $grey;
+height: 50px;
+margin: 2rem 1rem;
+color: #929292 !important;
+max-width: 100%;
+}
+textarea {
+  width: 100% !important;
+}
+}
+
+#con {
+  background-color: white;
+  padding: 3rem;
+  border: solid 2px $blue; 
+}
+}

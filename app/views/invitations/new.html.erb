@@ -1,0 +1,42 @@
+<div id="forma">
+	<div class="container">
+
+	<div class="col-md-10 col-md-offset-1">
+	<div id="con">
+		<h4 class="center upper">Let's get to know you better</h4>
+		<hr>
+		
+		<%= form_for @invitation do |f| %>
+		<p>
+			Hi, my <strong>name</strong> is
+			<%= f.text_field :name, required: true, placeholder: "Write your Nomad Name" %>, I'm from
+			<%= f.text_field :city, required: true, placeholder: "City" %> - <%= f.text_field :country, required: true, placeholder: "Country" %>, but now I live in <%= f.text_field :living_city, required: true, placeholder: "Where do you live now?" %>. <br><br><br>
+
+			I've been traveling <strong>around the world</strong> since <%= f.text_field :year, required: true, placeholder: "traveling since 2000" %>, visiting <%= f.text_field :year, required: true, placeholder: "How many countries have you visited?" %> <strong>countries.</strong> <br><br><br>
+
+			My future travel plans as a <strong>Nomad </strong>are, <%= f.text_area :plans, placeholder: "Tells us about your new trips" %> And you can contact me to my email <%= f.email_field :email, required: true, placeholder: "a@a.com" %>. <br><br><br>
+
+			<strong>Wait</strong>, I have more things about me: <br>
+
+			<%= f.text_area :comments, placeholder: "Tells us more about you" %>
+
+					Hope I can join your nomad team. <br><br><br>
+	
+		<div class="hidden">
+			<%= f.label :nickname %><br>
+			<%= f.text_field :nickname, hint: 'Esto se queda en blanco' %>
+		</div>
+		
+
+
+		<br>
+		<%= f.submit "Enviar", class:"button button_blue"%>
+		<br>
+
+		</p>
+
+		<% end %>
+		</div>
+	</div>
+	</div>
+</div>
