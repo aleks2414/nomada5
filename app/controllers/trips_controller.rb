@@ -14,7 +14,8 @@ class TripsController < ApplicationController
     @experiences = @trip.experiences
 
 
-    if @trip.experiences[0].photos.present?
+    if @experiences.present?
+      if @trip.experiences[0].photos.present?
     prepare_meta_tags(title: @trip.name,
                       description: @trip.description.truncate(50), 
                       keywords: @trip.name.split(","),
@@ -35,6 +36,7 @@ class TripsController < ApplicationController
         image: @trip.experiences[0].photos[0].image,
       }
       )
+        end
       end
 
   end

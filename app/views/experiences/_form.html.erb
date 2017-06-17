@@ -107,7 +107,7 @@
 
 
   <div class="field">
-    <%= f.label :Experience %><br>
+    <%= f.label :Experience, 'How great was this experience? (1 - 10)' %><br>
     <%= f.range_field :expe, :min=>0, :max=>10, :class=>"slide", :id=>"slider1"%>
   </div>
 
@@ -118,16 +118,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :How_much_money? %><br>
-    <%= f.number_field :money %>
+    <%= f.label :How_much_money_I_need? %><br>
+    <%= f.select :money, [["0 - 50 USD"], ["50 - 100 USD"], ["100 - 250 USD"], ["+ 250 USD"]], {:prompt => 'How much money?'}, {:required => true}%>
   </div>
 
   <div class="field">
     <%= f.label :Aprox_time %><br>
-    <%= f.text_field :aprox_time, required: true %>
+    <%= f.select :aprox_time, [["1 - 3 hours"], ["3 - 5 hours"], [" 5 - 12 hours"], ["+ 12 hours"]], {:prompt => 'How long the experience takes'}, {:required => true}%>
   </div>
   <div class="field">
-    <%= f.label :People_warm %><br>
+    <%= f.label :People_warm, 'People Warm (1 - 10)' %><br>
     <%= f.range_field :gente, :min=>0, :max=>10, :class=>"slide", :id=>"slider1"%>
   </div>
   <div class="field">
@@ -159,7 +159,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-group">              
-              <span class="btn btn-default btn-file">
+              <span class="btn btn-default">
                   <i class="fa fa-cloud-upload fa-lg"></i> Upload Photos 
                   <%= file_field_tag "images[]", type: :file, multiple: true %>
               </span>
