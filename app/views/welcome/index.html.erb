@@ -1,17 +1,25 @@
 <div id="titulos">
 <%= image_tag src="logo.png" %> <br><br>
+
+<!--       <ul>
+        <li>
+          <%= link_to "Experience trip", experiences_map_path, class: "button button_red2" %>
+        </li>
+        <li>
+          <%= link_to "Join the Nomad Club", new_invitation_path, class: "button button_blue2" %>
+        </li>
+      </ul> -->
+
 	<h2>Let your experiences tell your trips</h2>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ab veritatis dolorum aut minus et id perspiciatis, dolores inventore, ea, cum cupiditate autem ullam commodi, ut eligendi in culpa repellendus.</p>
+	<p>The new best way to share your world trips through experiences</p><br><br>
 
-			<ul>
-				<li>
-					<%= link_to "Experience trip", experiences_map_path, class: "button button_red" %>
-				</li>
-				<li>
-					<%= link_to "Join the Nomad Club", root_path, class: "button button_blue" %>
-				</li>
-			</ul>
 
+<div id="formulario">
+    <%= form_tag search_path, method: :get, role: "search" do %>
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for Nomads, Trips or Experiences" %>
+      <%= submit_tag "Search", name: nil, class: "button button_blue" %>
+    <% end %>
+</div>
 
 
 <br><br>
@@ -34,9 +42,7 @@
 
 
 <script>
-
 function initMap() {
-
     // Creating a new map
     var map = new google.maps.Map(document.getElementById("map2"), {
           center: new google.maps.LatLng(19.9590566, -7.4226508),
@@ -44,8 +50,6 @@ function initMap() {
           zoom: 3,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-
-
     // Creating the JSON data
     var json = [
         
@@ -70,40 +74,29 @@ function initMap() {
         <% end %>
         
     ]
-
     // Creating a global infoWindow object that will be reused by all markers
     var infoWindow = new google.maps.InfoWindow({
       maxWidth: 200
     });
-
     // Looping through the JSON data
     for (var i = 0, length = json.length; i < length; i++) {
       var data = json[i],
         latLng = new google.maps.LatLng(data.lat, data.lng);
-
       // Creating a marker and putting it on the map
       var marker = new google.maps.Marker({
         position: latLng,
         map: map,
         title: data.title
       });
-
       // Creating a closure to retain the correct data, notice how I pass the current data in the loop into the closure (marker, data)
       (function(marker, data) {
-
         // Attaching a click event to the current marker
         google.maps.event.addListener(marker, "click", function(e) {
           infoWindow.setContent(data.description);
           infoWindow.open(map, marker);
         });
-
-
       })(marker, data);
-
 }
-
-
-
 }
     
 </script>

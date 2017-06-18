@@ -1,0 +1,50 @@
+<h2 class="center upper">Search Results</h2>
+<hr>
+
+<div id="results">
+<div class="container">
+<div class="col-md-6 col-md-offset-3">
+	
+<% if @nomads.present? %>
+		<h3>Nomads</h3>
+		<hr class="lefty">
+		<% @nomads.each do |nomad| %>
+		<%= link_to nomad_path(nomad) do %>
+		<h4 class="blue"><%= nomad.name %></h4>
+		<p><%= nomad.description.truncate(150) %></p>
+		<!-- <h6><%#= nomad.created_at.strftime(" %b %d")%></h6> -->
+		<% end %>
+		<% end %>
+<% end %>
+
+
+
+<% if @trips.present? %>
+		<h3>Trips</h3>
+		<hr class="lefty">
+		<% @trips.each do |trip| %>
+			<%= link_to trip_path(trip) do %>
+			<h4 class="red"><%= trip.name %></h4>
+			<p><%= trip.description.truncate(150) %></p>
+			<h6><%= trip.created_at.strftime(" %b %d")%></h6>
+			<% end %>
+		<% end %>
+<% end %>
+
+
+
+<% if @experiences.present? %>
+		<h3>Experiences</h3>
+		<hr class="lefty">
+		<% @experiences.each do |experience| %>
+			<%= link_to trip_experience_path(experience.trip_id, experience) do %>
+			<h4><%= experience.title %></h4>
+			<p><%= experience.description.truncate(150) %></p>
+			<h6><%= experience.created_at.strftime(" %b %d")%></h6>
+			<% end %>
+		<% end %>
+<% end %>
+
+</div>
+</div>
+</div>

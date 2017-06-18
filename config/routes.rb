@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   
-  get 'nomads/show'
+get 'nomads/show'
 
 resources :trips do
   resources :experiences do
@@ -25,6 +25,8 @@ end
   get '/experiences_map' => 'welcome#map'
 
   resources :nomads, only: [:show]
+
+  get 'search', to: 'search#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

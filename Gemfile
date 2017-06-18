@@ -35,6 +35,7 @@ gem 'ransack'
 gem 'aws-sdk', '~> 2.3'
 gem "figaro"
 gem 'meta-tags'
+gem 'searchkick'
 
 
 # Use ActiveModel has_secure_password

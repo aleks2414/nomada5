@@ -229,6 +229,9 @@ Main components
     font-size: 48px;
     max-width: 100%;
   }
+  p {
+    font-size: 17px;
+  }
   li {
     display: inline;
     margin: 0 5px 0 5px;
@@ -532,6 +535,15 @@ hr.lefty {
 
 hr.red {
   border-color: $red;
+  max-width: 100% !important;
+}
+
+.blue {
+  color: $blue
+}
+
+.red{
+  color: $red;
 }
 
 .button {
@@ -948,4 +960,22 @@ textarea {
   padding: 3rem;
   border: solid 2px $blue; 
 }
+}
+
+#formulario {
+  input[type="text"] {
+  display: block;
+  margin: 0 auto;
+  width: 800px;
+  max-width: 100%;
+  margin-top: 2rem;
+  font-family: 'Gotham_thin', sans-serif !important;
+  border:none;
+  border-bottom:1.4px solid $red;
+  background-color: white !important;
+  -webkit-box-shadow: none;
+  border-radius: 0;
+  height: 50px;
+  font-size: 22px;
+  }
 }

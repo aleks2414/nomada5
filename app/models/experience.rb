@@ -1,4 +1,6 @@
 class Experience < ActiveRecord::Base
+
+searchkick
   belongs_to :nomad
   belongs_to :trip
   has_many :photos, dependent: :destroy

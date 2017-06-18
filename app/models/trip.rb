@@ -1,4 +1,6 @@
 class Trip < ActiveRecord::Base
+
+searchkick
   belongs_to :nomad
   has_many :experiences, dependent: :destroy
 
