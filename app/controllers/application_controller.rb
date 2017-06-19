@@ -13,7 +13,7 @@ before_action :prepare_meta_tags, if: "request.get?"
     site_name   = "Nomada 5"
     title       = site_name
     description = "The new way to share your world trips through experiences"
-    image       = options[:image] || "http://www.nomada5.com/assets/logo.png"
+    image       = options[:image] || "http://www.nomada5.com/assets/logo-ab4cb433722ee6d49325675241ead5fe967c4fdaf09258a685695044f1e0deb8.png"
     current_url = request.url
 
     # Let's prepare a nice set of defaults
