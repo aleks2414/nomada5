@@ -9,3 +9,5 @@
 b03= Nomad.create!({:email => "dre_8916@hotmail.com", :password => "nomada52017", :password_confirmation => "nomada52017", :name => "Daniel Romo", :facebook => "Dan Venture", :pais => "México", :ciudad => "México" })
 
 b04= Nomad.create!({:email => "diego10891@hotmail.com", :password => "nomada52017", :password_confirmation => "nomada52017", :name => "Diego Flores", :facebook => "Diego Flores", :pais => "México", :ciudad => "México" })
+
+b04= Nomad.create!({:email => "diego10891@hotmail.com", :password => "nomada52017", :password_confirmation => "nomada52017", :name => "Diego Flores", :facebook => "Diego Flores", :pais => "México", :ciudad => "México" })
