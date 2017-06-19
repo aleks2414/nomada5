@@ -28,6 +28,8 @@ end
 
   get 'search', to: 'search#search'
 
+  get '*path' => redirect('/')
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
