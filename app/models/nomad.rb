@@ -3,7 +3,7 @@ class Nomad < ActiveRecord::Base
 searchkick
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :experiences, dependent: :destroy
   has_many :trips, dependent: :destroy
