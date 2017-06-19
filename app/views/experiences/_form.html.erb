@@ -34,7 +34,10 @@
 
 </div>
 <hr>
-<h4>Experience Location</h4>
+<h4>Location</h4>
+<p>1.- Click the button to get your current location</p> <br>
+<p>2.- Drag the marker until the exact location</p> <br>
+<p>* If Geolocation error, enable "share your location" on <strong>Settings</strong></p>
 
   <div class="field">
     <%= f.label :last_address %><br>
@@ -42,8 +45,7 @@
   </div>
 
 <div id="panel">
-    <!--<input id="city_country" type="textbox" value="Berlin, Germany">-->
-    <input type="button" value="Change experience location" id="bucks" class="button button_red">
+  <input type="button" value="Change experience location" id="bucks" class="button button_red">
   </div>
   <div id="mapCanvas"></div>
   <div id="infoPanel">
@@ -299,7 +301,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCXph4Sx9MklyoSlZ4JH-FCryYgRRgWi4&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA70HYo_A20eeT6Ye7-b0XL-chKMuwJHyc&callback=initMap"
         async defer></script>
 
 <script>

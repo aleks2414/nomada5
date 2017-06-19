@@ -5,8 +5,8 @@ searchkick
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :experiences
-  has_many :trips
+  has_many :experiences, dependent: :destroy
+  has_many :trips, dependent: :destroy
 
 extend FriendlyId
 friendly_id :name, use: [:finders, :slugged]
