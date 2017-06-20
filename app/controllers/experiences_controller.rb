@@ -100,7 +100,7 @@ if @experience.save
   def destroy
     @experience.destroy
     respond_to do |format|
-      format.html { redirect_to experiences_url, notice: 'Experience was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Experience was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -117,6 +117,6 @@ if @experience.save
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :description, :vista, :olfato, :gusto, :oido, :tacto, :latitude, :longitude, :expe, :money, :currency, :aprox_time, :gente, :idioma, :is_risky, :is_internet, :is_reservation, :website, :advice, :nomad_id, :address, :pais, :ciudad)
+      params.require(:experience).permit(:title, :description, :vista, :olfato, :gusto, :oido, :tacto, :latitude, :longitude, :expe, :money, :currency, :aprox_time, :gente, :idioma, :is_risky, :is_internet, :is_reservation, :website, :advice, :nomad_id, :address, :pais, :ciudad, :fecha)
     end
 end

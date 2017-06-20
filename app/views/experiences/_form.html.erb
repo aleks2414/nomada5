@@ -16,6 +16,11 @@
     <%= f.text_area :description, required: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_field :fecha, required: true %>
+  </div>
+
 <div class="row">
 
   <div class="col-sm-6">
@@ -41,7 +46,7 @@
 
   <div class="field">
     <%= f.label :last_address %><br>
-    <%= f.text_field :address, :readonly => true, id: "address" %>
+    <%= f.text_field :address, :readonly => true, id: "address", required: true %>
   </div>
 
 <div id="panel">

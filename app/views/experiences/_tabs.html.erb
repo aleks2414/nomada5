@@ -1,0 +1,135 @@
+<div id="tabs">
+	<div class="tab">
+		<a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'London')"  id="defaultOpen"><span class="fa fa-info"></span>Information</a>
+		<a href="javascript:void(0)" class="tablinks" id="bucks2" onclick="openCity(event, 'Paris')"><span class="fa fa-map-marker"></span>Map</a>
+		<a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Tokyo')"><span class="fa fa-star"></span>Reviews</a>
+		<a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Madrid')"><span class="fa fa-bed"></span>AirBnb</a>
+	</div>
+
+	<div id="London" class="tabcontent">
+		<div id="tres">
+			<ul>
+
+				<br>
+				<h5>DESCRIPTION:</h5>
+				<p><%= @experience.description %></p>
+				<br>
+				<div id="icons">
+					<div class="row">
+						<div class="col-sm-6">
+							<div>
+								<span class="material-icons md-24">mood</span><h6> Experience: <%= @experience.expe %></h6>
+							</div>
+
+							<div>
+								<span class="material-icons md-24">flag</span><h6> Language: <%= @experience.idioma %></h6>
+							</div>
+
+							<div>
+								<span class="material-icons md-24">monetization_on</span><h6> Currency: <%= @experience.currency %></h6>
+							</div>
+
+							<div>
+								<span class="material-icons md-24">local_atm</span><h6> How much money: <%= @experience.money %></h6>
+							</div>
+
+
+
+							<div>
+								<span class="material-icons md-24">timer</span><h6> Time experience lasts: <%= @experience.aprox_time %></h6>
+							</div>
+
+							<div>
+								<span class="material-icons md-24">face</span><h6> People warm: <%= @experience.gente %></h6>
+							</div>
+
+						</div>
+
+						<div class="col-sm-6">
+
+							<% if !@experience.is_risky? %> 
+							<div>
+								<span class="material-icons md-24">lock_outline</span><h6> Safe experience</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.is_internet? %> 
+							<div>
+								<span class="material-icons md-24">web</span><h6>Internet Access</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.is_reservation? %> 
+							<div>
+								<span class="material-icons md-24">receipt</span><h6>Reservation Needed</h6>
+							</div>
+							<% end %>
+
+							<div>
+								<span class="material-icons md-24">dvr</span><h6> Website: <br> <%= @experience.website %></h6>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+
+				<br>
+				<h5>Advice from <%= @trip.nomad.name %>:</h5>
+				<p><%= @experience.advice %></p>
+
+			</ul>
+		</div>
+	</div>
+
+	<div id="Paris" class="tabcontent">
+		<div id="tres">
+			<ul>
+				<div id="map"></div>
+			</ul>
+		</div>
+	</div>
+
+	<div id="Tokyo" class="tabcontent">
+		<div id="tres">
+			<ul>
+				<!-- Reviews -->
+				<h4>Reviews: <%= @experience.average_rating %> (<%= @reviews.count %>)</h4>
+				<%= render 'review/review' %>
+				<%= render 'review/list' %>
+			</ul>
+		</div>
+	</div>
+
+	<div id="Madrid" class="tabcontent">
+		<div id="tres">
+			<ul>
+				<%= link_to "Watch all AirBnb's around #{@experience.title}", "https://www.airbnb.mx/s/#{@experience.address}", :target => "_blank", class:"button button_red3 button_block" %>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+<br>
+
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>

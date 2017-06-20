@@ -1,5 +1,14 @@
 <br><br><div id="show_trip">
 	<h1 class=" upper"><%=@trip.name %></h1>
+	<h3>
+		<% @trip.experiences.order("fecha asc").each_with_index do |experience, index| %>
+				<% if index == 0 %>
+				<%= experience.fecha.strftime(" %b %d %y") %> -
+				<% elsif index == @trip.experiences.count - 1 %>
+				<%= experience.fecha.strftime(" %b %d %y") %>
+				<% end %>											
+		<% end %>
+	</h3>
 	<h5 class="">by: <%= link_to "#{@trip.nomad.name}", nomad_path(@trip.nomad) %></h5>
 
 <br>
@@ -47,12 +56,12 @@
 			<div id="derecho">
 			<div class="col-md-3">
 				<ul>
-				<% @experiences.order("created_at asc").each_with_index do |experience, i| %>
+				<% @experiences.order("fecha asc").each_with_index do |experience, i| %>
 					<li class="<%= 'active' if current_page?(trip_experience_path(@trip, experience)) %>"">
 						<%= link_to trip_experience_path(@trip, experience) do %>
 							<div class="numberCircle"><%= i+1 %></div>
 							<h4><%= experience.title.truncate(35) %></h4>
-							<h5><%= experience.created_at.strftime(" %b %d") %></h5>
+							<h5><%= experience.fecha.strftime(" %b %d %y") %></h5>
 							<h3><%= experience.pais %> - <%= experience.ciudad %></h3>
 						<% end %>
 					</li>

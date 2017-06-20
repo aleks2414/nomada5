@@ -12,19 +12,13 @@
 					<h2><%= trip.name.truncate(30) %></h2>
 					<hr>
 					<h3>	
-						<% trip.experiences.order("created_at asc").each do |experience| %>
-								
-								<%if experience == trip.experiences.first%>
-
-								<%= experience.created_at.strftime(" %b %d") %>
-
-								<% elsif experience == trip.experiences.last%>
-
-								<%= experience.created_at.strftime(" %b %d") %> -
-
-								<%end%>
-								
-								<% end %>
+						<% trip.experiences.order("fecha asc").each_with_index do |experience, index| %>
+								<% if index == 0 %>
+								<%= experience.fecha.strftime(" %b %d %y") %>
+								<% elsif index == trip.experiences.count - 1 %>
+								- <%= experience.fecha.strftime(" %b %d %y") %>
+								<% end %>											
+						<% end %>
 					</h3>
 					<div class="row">
 							<h4>- <%= trip.experiences.count %> experiences -</h4>
