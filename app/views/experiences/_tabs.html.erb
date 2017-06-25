@@ -4,6 +4,7 @@
 		<a href="javascript:void(0)" class="tablinks" id="bucks2" onclick="openCity(event, 'Paris')"><span class="fa fa-map-marker"></span>Map</a>
 		<a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Tokyo')"><span class="fa fa-star"></span>Reviews</a>
 		<a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Madrid')"><span class="fa fa-bed"></span>AirBnb</a>
+		<a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Mexico')"><span class="fa fa-plane"></span>SkyScanner</a>
 	</div>
 
 	<div id="London" class="tabcontent">
@@ -106,6 +107,18 @@
 		<div id="tres">
 			<ul>
 				<%= link_to "Watch all AirBnb's around #{@experience.title}", "https://www.airbnb.mx/s/#{@experience.address}", :target => "_blank", class:"button button_red3 button_block" %>
+			</ul>
+		</div>
+	</div>
+
+<div id="Mexico" class="tabcontent">
+		<div id="tres">
+			<ul>
+				<% for airport in @airports %>
+       		
+       		<%= link_to "Flight to #{@experience.ciudad}-#{@experience.pais}", "https://www.skyscanner.net/inspire/map?outboundPlace=#{airport.iata}&preferDirects=false", :target => "_blank", class:"button button_blue3 button_block" %>
+				<% end %>
+				<h5 class="center blue"><%= airport.name %> (<%= airport.distance.round(2) %> miles)</h5>
 			</ul>
 		</div>
 	</div>

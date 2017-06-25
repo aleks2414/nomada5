@@ -595,6 +595,18 @@ hr.red {
     background-color: white;
     border: solid 2px $red;
   }
+}
+
+.button_blue3 {
+  color: white !important;
+  background-color: $blue;
+  border: solid 2px white;
+  padding: 30px 0;
+  &:hover {
+    color: $blue !important;
+    background-color: white;
+    border: solid 2px $blue;
+  }
 
 }
 

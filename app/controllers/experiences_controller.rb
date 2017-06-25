@@ -16,6 +16,8 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1
   # GET /experiences/1.json
   def show
+    @experience = Experience.find(params[:id])
+    @airports = Airport.near([@experience.latitude, @experience.longitude], 200).limit(1)
     @photos = @experience.photos
     @reviews = @experience.reviews
     @experiences = @trip.experiences
