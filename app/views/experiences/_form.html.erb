@@ -60,11 +60,11 @@
   <div id="markerStatus"><i>Click and drag the marker.</i></div>
 </div>
 
-<div class="field hidden">
+<div class="field">
   <%= f.label :latitude %><br>
   <%= f.text_field :latitude, id: "info1" %>
 </div>
-<div class="field hidden">
+<div class="field">
   <%= f.label :longitude %><br>
   <%= f.text_field :longitude, id: "info2" %>
 </div>
@@ -359,6 +359,7 @@
           title: 'My Title'
         });
         updateMarkerPosition(results[0].geometry.location);
+        updateMarkerPosition2(results[0].geometry.location);
         geocodePosition(results[0].geometry.location);
         
       // Add dragging event listeners.
@@ -369,6 +370,7 @@
       google.maps.event.addListener(marker, 'drag', function() {
         updateMarkerStatus('Dragging...');
         updateMarkerPosition(marker.getPosition());
+        updateMarkerPosition2(marker.getPosition());
       });
 
       google.maps.event.addListener(marker, 'dragend', function() {
@@ -379,6 +381,7 @@
 
       google.maps.event.addListener(map, 'click', function(e) {
         updateMarkerPosition(e.latLng);
+        updateMarkerPosition2(e.latLng);
         geocodePosition(marker.getPosition());
         marker.setPosition(e.latLng);
         map.panTo(marker.getPosition()); 
