@@ -22,27 +22,141 @@
 								<span class="material-icons md-24">mood</span><h6> Experience: <%= @experience.expe %></h6>
 							</div>
 
+							<% if @experience.idioma.present? %>
 							<div>
 								<span class="material-icons md-24">flag</span><h6> Language: <%= @experience.idioma %></h6>
 							</div>
+							<% end %>
 
+							<% if @experience.currency.present? %>
 							<div>
 								<span class="material-icons md-24">monetization_on</span><h6> Currency: <%= @experience.currency %></h6>
 							</div>
+							<% end %>
 
+							<% if @experience.money.present? %>
 							<div>
 								<span class="material-icons md-24">local_atm</span><h6> How much money: <%= @experience.money %></h6>
 							</div>
+							<% end %>
 
 
 
+							<% if @experience.aprox_time.present? %>
 							<div>
 								<span class="material-icons md-24">timer</span><h6> Time experience lasts: <%= @experience.aprox_time %></h6>
 							</div>
+							<% end %>
 
+							<% if @experience.gente.present? %>
 							<div>
 								<span class="material-icons md-24">face</span><h6> People warm: <%= @experience.gente %></h6>
 							</div>
+							<% end %>
+
+							<% if @experience.ages.present? %>
+							<div>
+								<span class="material-icons md-24">supervisor_account</span><h6> Ages: <%= @experience.ages %></h6>
+							</div>
+							<% end %>
+
+							<% if @experience.food.present? %>
+							<div>
+								<span class="material-icons md-24">restaurant</span><h6> Food: <%= @experience.food %></h6>
+							</div>
+							<% end %>
+
+							<% if @experience.drink.present? %>
+							<div>
+								<span class="material-icons md-24">local_bar</span><h6> Drink: <%= @experience.drink %></h6>
+							</div>
+							<% end %>
+
+							<% if @experience.tip.present? %>
+							<div>
+								<span class="material-icons md-24">toll</span><h6> Tip: <%= @experience.tip %></h6>
+							</div>
+							<% end %>
+<!--  -->
+							<% if @experience.transportation == "Train" %>
+							<div>
+								<span class="material-icons md-24">directions_railway</span><h6>Train Access</h6>
+							</div>
+							<% elsif @experience.transportation == "Bus" %>
+							<div>
+								<span class="material-icons md-24">directions_bus</span><h6>Bus Access</h6>
+							</div>
+
+							<% elsif @experience.transportation == "Subway" %>
+							<div>
+								<span class="material-icons md-24">directions_subway</span><h6>SubWay Access</h6>
+							</div>
+
+							<% elsif @experience.transportation == "Car" %>
+							<div>
+								<span class="material-icons md-24">directions_car</span><h6>Car Access</h6>
+							</div>
+
+							<% elsif @experience.transportation == "Taxi" %>
+							<div>
+								<span class="material-icons md-24">local_taxi</span><h6>Taxi Access</h6>
+							</div>
+
+							<% elsif @experience.transportation == "Bicycle" %>
+							<div>
+								<span class="material-icons md-24">directions_bike</span><h6>Bicycle Access</h6>
+							</div>
+
+							<% end %>
+<!--  -->
+
+	<% if @experience.weather == "Rainy" %>
+	<div>
+		<span class="material-icons md-24">bubble_chart</span><h6>Rainy weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Sunny" %>
+	<div>
+		<span class="material-icons md-24">wb_sunny</span><h6>Sunny weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Cloudy" %>
+	<div>
+		<span class="material-icons md-24">wb_cloudy</span><h6>Cloudy weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Hot" %>
+	<div>
+		<span class="material-icons md-24">whatshot</span><h6>Hot weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Cold" %>
+	<div>
+		<span class="material-icons md-24">tonality</span><h6>Cold weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Dry" %>
+	<div>
+		<span class="material-icons md-24">filter_hdr</span><h6>Dry weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Windy" %>
+	<div>
+		<span class="material-icons md-24">toys</span><h6>Windy weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Snow" %>
+	<div>
+		<span class="material-icons md-24">ac_unit</span><h6>Snow weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% elsif @experience.weather == "Wet" %>
+	<div>
+		<span class="material-icons md-24">invert_colors</span><h6>Wet weather in <%= @experience.fecha.strftime(" %b") %></h6>
+	</div>
+
+	<% end %>
+
 
 						</div>
 
@@ -66,9 +180,47 @@
 							</div>
 							<% end %>
 
+							<% if @experience.is_uber? %> 
+							<div>
+								<span class="material-icons md-24">directions_car</span><h6>Uber available</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.is_adaptador? %> 
+							<div>
+								<span class="material-icons md-24">radio_button_checked</span><h6>Electric Adapter needed</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.need_visa? %> 
+							<div>
+								<span class="material-icons md-24">near_me</span><h6>Visa Required</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.is_souvenirs? %> 
+							<div>
+								<span class="material-icons md-24">card_giftcard</span><h6>Souvenirs</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.is_taxi_safe? %> 
+							<div>
+								<span class="material-icons md-24">local_taxi</span><h6>Taxi Safe</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.credit_card? %> 
+							<div>
+								<span class="material-icons md-24">credit_card</span><h6>Credit Card</h6>
+							</div>
+							<% end %>
+
+							<% if @experience.website.present? %>
 							<div>
 								<span class="material-icons md-24">dvr</span><h6> Website: <br> <%= @experience.website %></h6>
 							</div>
+							<% end %>
 
 						</div>
 					</div>

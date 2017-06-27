@@ -119,6 +119,6 @@ if @experience.save
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :description, :vista, :olfato, :gusto, :oido, :tacto, :latitude, :longitude, :expe, :money, :currency, :aprox_time, :gente, :idioma, :is_risky, :is_internet, :is_reservation, :website, :advice, :nomad_id, :address, :pais, :ciudad, :fecha)
+      params.require(:experience).permit(:title, :description, :vista, :olfato, :gusto, :oido, :tacto, :latitude, :longitude, :expe, :money, :currency, :aprox_time, :gente, :idioma, :is_risky, :is_internet, :is_reservation, :website, :advice, :nomad_id, :address, :pais, :ciudad, :fecha, :ages, :plan, :drink, :food, :tip, :transportation, :weather, :is_uber, :is_adaptador, :need_visa, :is_souvenirs, :is_taxi_safe, :credit_card)
     end
 end

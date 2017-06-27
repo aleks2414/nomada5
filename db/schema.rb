@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626033357) do
+ActiveRecord::Schema.define(version: 20170626160852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,19 @@ ActiveRecord::Schema.define(version: 20170626033357) do
     t.string   "ciudad"
     t.string   "slug"
     t.datetime "fecha"
+    t.string   "ages"
+    t.string   "plan"
+    t.string   "drink"
+    t.string   "food"
+    t.string   "tip"
+    t.string   "transportation"
+    t.string   "weather"
+    t.boolean  "is_uber"
+    t.boolean  "is_adaptador"
+    t.boolean  "need_visa"
+    t.boolean  "is_souvenirs"
+    t.boolean  "is_taxi_safe"
+    t.boolean  "credit_card"
   end
 
   add_index "experiences", ["nomad_id"], name: "index_experiences_on_nomad_id", using: :btree
