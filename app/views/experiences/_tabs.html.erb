@@ -266,11 +266,13 @@
 <div id="Mexico" class="tabcontent">
 		<div id="tres">
 			<ul>
+			<% if @airports.present? %>
 				<% for airport in @airports %>
        		
        		<%= link_to "Flight to #{@experience.ciudad}-#{@experience.pais}", "https://www.skyscanner.net/inspire/map?outboundPlace=#{airport.iata}&preferDirects=false", :target => "_blank", class:"button button_blue3 button_block" %>
 				<% end %>
 				<h5 class="center blue"><%= airport.name %> (<%= airport.distance.round(2) %> miles)</h5>
+				<% end %>
 			</ul>
 		</div>
 	</div>
